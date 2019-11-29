@@ -25,7 +25,7 @@
 .pub_content .pub_title span{color: #999;margin-left: .6rem;font-weight: normal;font-size: .8rem;}
 .pub_content .item-content textarea{width: 100%;padding: .6rem;min-height: .6rem;display: block;border: 0;margin-bottom: .6rem;}
 .pub_content .sure-btn{border-radius:.4rem;width: 8.5rem;text-align: center;height: 2.25rem;line-height: 2.25rem;margin: 0 auto;}
-.pub_content .city-picker{border: 0;text-align: right;width: 12rem;font-size: .8rem}
+.pub_content .city-picker{border: 0;text-align: right;width: 10rem;font-size: .8rem}
 .picker-modal{background: #fff;}
 
 .upload-ul{ position: relative;  display: inline-block; *display: inline; *zoom:1; max-width: 520px; padding-left: .6rem; margin-bottom: 0;}
