@@ -51,7 +51,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -81,7 +81,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -111,7 +111,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -141,7 +141,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -182,36 +182,38 @@
             <h1 class="title">发布动态</h1>
         </header>
         <div class="content pub_content">
-            <h3 class="pub_title">添加图片</h3>
-            <!-- 插件 -->
-            <div class="show_img">
-                <ul class="upload-ul clearfix">
-                    <li class="upload-pick">
-                        <div class="webuploader-container clearfix" id="goodsUpload"></div>
-                    </li>
-                </ul>
-            </div>
-            <h3 class="pub_title">添加文字<span>(<i>0</i>/500)</span></h3>
-            <div class="item-content">
-                <div class="item-inner">
-                  <div class="item-input">
-                    <textarea placeholder="点击此处输入汉字" class="info"></textarea>
-                  </div>
+            <form action="" method="post" id="pub">
+                <h3 class="pub_title">添加图片</h3>
+                <!-- 插件 -->
+                <div class="show_img">
+                    <ul class="upload-ul clearfix">
+                        <li class="upload-pick">
+                            <div class="webuploader-container clearfix" id="goodsUpload"></div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <h3 class="pub_title botom">
-                添加位置<span class="icon icon-right pull-right"></span>
-                <input type="text" value="" class="city-picker pull-right">
-            </h3>
-            <h3 class="pub_title">选择标签</h3>
-            <div class="pags">
-                <a class="pag">冰川景色</a>
-                <a class="pag">探险游</a>
-                <a class="pag">七日游</a>
-            </div>
-            <div class="content-block">
-                <p><a href="#" class="button button-round sure-btn">确认发布</a></p>
-            </div>
+                <h3 class="pub_title">添加文字<span>(<i>0</i>/500)</span></h3>
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-input">
+                            <textarea placeholder="点击此处输入汉字" class="info" name="info"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="pub_title botom">
+                    添加位置<span class="icon icon-right pull-right"></span>
+                    <input type="text" value="" name="pos" class="city-picker pull-right">
+                </h3>
+                <h3 class="pub_title">选择标签</h3>
+                <div class="pags">
+                    <a class="pag">冰川景色</a>
+                    <a class="pag">探险游</a>
+                    <a class="pag">七日游</a>
+                </div>
+                <div class="content-block">
+                    <p><a href="#" class="button button-round sure-btn">确认发布</a></p>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -221,33 +223,129 @@
             <div class="top">
                 <img src="./images/logo.png" alt="">
             </div>
-            <div class="list-block">
-                <div class="item-inner login_inner">
-                    <div class="item-title label"><img src="./images/phone.png" alt="手机号"/></div>
-                    <div class="item-input phone">
-                        <input type="text" placeholder="输入手机号">
+            <form action="" method="POST" id="denglu">
+                <input type="hidden" name="act" value="login"/>
+                <div class="list-block">
+                    <div class="item-inner login_inner">
+                        <div class="item-title label"><img src="./images/phone.png" alt="手机号" /></div>
+                        <div class="item-input phone">
+                            <input type="text" placeholder="输入手机号">
+                        </div>
+                    </div>
+                    <div class="item-inner login_inner">
+                        <div class="item-title label"><img src="./images/pwd.png" alt="密码" /></div>
+                        <div class="item-input pwd">
+                            <input type="password" placeholder="输入密码" class="">
+                        </div>
+                    </div>
+                    <div class="item-inner login_inner">
+                        <div class="item-title label"><img src="./images/yzcode.png" alt="验证码" /></div>
+                        <div class="item-input yz">
+                            <input type="text" placeholder="输入验证码">
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <div class="row">
+                            <a href="#" class="btn_bg"></a>
+                        </div>
+                    </div>
+                    <div class="more">
+                        <a>忘记密码</a>|<a class="register">注册账号</a>
                     </div>
                 </div>
-                <div class="item-inner login_inner">
-                    <div class="item-title label"><img src="./images/pwd.png" alt="密码"/></div>
-                    <div class="item-input pwd">
-                        <input type="password" placeholder="输入密码" class="">
+            </form>
+        </div>
+    </div>
+<!-- 注册页面 -->
+    <div class="page register-page" id="register">
+        <div class="content">
+            <header class="bar bar-nav">
+                <h1 class='title'>用户注册</h1>
+            </header>
+            <div class="content">
+                <form action="" method="post" id="reg">
+                    <input type="hidden" name="act" value="reg"/>
+                    <div class="list-block">
+                        <ul>
+                            <!-- Text inputs -->
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">昵称</div>
+                                        <div class="item-input">
+                                            <input type="text" name="ruser" placeholder="用户名">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">邮箱</div>
+                                        <div class="item-input">
+                                            <input type="email" name="remail" placeholder="E-mail">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">密码</div>
+                                        <div class="item-input">
+                                            <input type="password" name="rpwd" placeholder="密码" class="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">性别</div>
+                                        <div class="item-input">
+                                            <select name="rsex">
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">联系</div>
+                                        <div class="item-input">
+                                            <input type="text" name="rphone" placeholder="手机号">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="align-top">
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">简介</div>
+                                        <div class="item-input">
+                                            <textarea placeholder="输入个人简介" name="rdesc"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="item-inner login_inner">
-                    <div class="item-title label"><img src="./images/yzcode.png" alt="验证码"/></div>
-                    <div class="item-input yz">
-                        <input type="text" placeholder="输入验证码">
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-50"><a href="#" class="button button-big button-light gologin">取消</a></div>
+                            <div class="col-50"><a href="#" class="button button-big button-fill button-info regsub">提交</a></div>
+                        </div>
                     </div>
-                </div>
-                <div class="content-block">
-                    <div class="row">
-                        <a href="#" class="btn_bg"></a>
-                    </div>
-                </div>
-                <div class="more">
-                    <a>忘记密码</a>|<a>注册账号</a>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -257,9 +355,13 @@
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
     <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
     <script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+   <!-- 正则验证 -->
+    <script src="./js/common.js"></script>
+    <!-- 图片上传 -->
     <script src="./js/webuploader.min.js"></script>
     <script src="./js/diyUpload.js"></script>
-    <script src="./js/common.js"></script>
+    <!-- 引用页面主要功能 -->
+    <script src="./js/app.js"></script>
     <script>
     ;(function($){
         $.config = {
@@ -276,14 +378,6 @@
             $.router.load('#publish');
         });
         $('.btn_bg').bind("click",function(){
-            if(!checkPhone($(".phone input").val())){
-                alert("手机号码不对请重新输入");
-                return false;
-            }
-            if(!checkPwd($(".pwd input").val())){
-                alert("密码不对，请重新输入");
-                return false;
-            }
             $(".phone input").val("");
             $(".pwd input").val("");
             $.router.load('#index');
@@ -292,9 +386,18 @@
         $('.mine').bind("click",function(){
             $.router.load('#login');
         });
+              
+        $('.register').bind("click",function(){
+            $.router.load('#register');
+        });
+
         $('.back').bind("click",function(){
             // $.router.back();
             history.go(-2);
+        });
+        $('.gologin').bind("click",function(){
+            // $.router.back();
+            $.router.load('#login');
         });
         $('.camera').parent().bind("click",function(){
             $("#takepicture").click();
@@ -308,23 +411,8 @@
         });
 
         $(".pag").bind("click",function(){
-            if($(this).is('.pag_on')){
-                $(this).removeClass('pag_on');
-            }
-            else{
-                $(this).addClass('pag_on');
-            }
-        })
-        $(".follow").bind("click",function(){
-            if($(this).is('.follow_on')){
-                $(this).html("+关注");
-                $(this).removeClass('follow_on');
-            }
-            else{
-                $(this).html("以关注");
-                $(this).addClass('follow_on');
-            }
-        })
+                $(this).toggleClass('pag_on');
+        });
 
         $(document).on('click','.create-actions', function () {
             var buttons1 = [
@@ -387,6 +475,17 @@
                 allowMagnify: true,
                 crop: true,
                 type: "image/jpeg"
+            }
+        });    
+        $(".follow").bind("click",function(){
+            if($(this).attr('status') == 0){
+                $(this).html("以关注");
+                $(this).addClass('follow_on');
+                $(this).attr('status',1);
+            }else{
+                $(this).html("+关注");
+                $(this).removeClass('follow_on');
+                $(this).attr('status',0);
             }
         });
     })(jQuery);
