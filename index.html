@@ -23,7 +23,7 @@
             <!-- 首页 -->
             <header class="bar bar-nav heade">
                 <input id="takepicture" type="file" accept="image/*" capture="camera" style="display: none">
-                <img src="./images/camera.png" alt="" class="pull-right camera" />
+                <a class="pull-right camer"><img src="./images/camera.png" alt="" class="camera"/></a>
                 <h1 class="title">社区</h1>
             </header>
             <nav class="bar bar-tab">
@@ -240,7 +240,7 @@
             // $.router.back();
             history.go(-2);
         });
-        $('.camera').bind("click",function(){
+        $('.camera').parent().bind("click",function(){
             $("#takepicture").click();
         });
 

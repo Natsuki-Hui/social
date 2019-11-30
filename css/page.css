@@ -17,6 +17,7 @@
 .control .link img{width: 0.9rem;margin-right: .4rem;}
 .card{box-shadow: 0 0.05rem 0.1rem rgba(0,0,0,.1);}
 .index-content{margin-bottom: 3rem;}
+.camer{position: relative;z-index: 9;display: block;}
 
 /* 发布样式 */
 .heade2 .title{color: #333;}
