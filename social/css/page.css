@@ -29,6 +29,8 @@
 .list-block .login_inner{padding: .7rem 0 .6rem;}
 .more{text-align: center;}
 .more a{padding: .2rem .3rem;}
+.register-page header{background-color: #477bff;}
+.register-page .list-block {margin-top: .5rem;}
 
 /* 发布样式 */
 .heade2 .title{color: #333;}
