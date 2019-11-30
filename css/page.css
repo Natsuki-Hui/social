@@ -23,10 +23,16 @@
 .show_img{margin-bottom: .6rem;}
 .pub_content .pub_title{font-weight: 500;margin: 0;padding: 1rem .6rem;background: #fff;}
 .pub_content .pub_title span{color: #999;margin-left: .6rem;font-weight: normal;font-size: .8rem;}
-.pub_content .item-content textarea{width: 100%;padding: .6rem;min-height: .6rem;display: block;border: 0;margin-bottom: .6rem;}
+.pub_content .item-content textarea{height: 9rem;width: 100%;padding: .6rem;min-height: .6rem;display: block;border: 0;margin-bottom: .6rem;}
 .pub_content .sure-btn{border-radius:.4rem;width: 8.5rem;text-align: center;height: 2.25rem;line-height: 2.25rem;margin: 0 auto;}
 .pub_content .city-picker{border: 0;text-align: right;width: 10rem;font-size: .8rem}
 .picker-modal{background: #fff;}
+.pub_content .botom{margin-bottom: .6rem;}
+.pags{background: #fff;padding: .6rem;}
+.pag{color: #afafaf;border: 1px solid #afafaf;padding: .1rem .6rem;}
+.pag_on{color: #fff;border: 1px solid #3386ff;background: #3386ff;}
+.follow{border: 1px solid #3386ff;width: 3.2rem;height: 1.6rem;line-height: 1.6rem;text-align: center;}
+.follow_on{color: #afafaf;border: 1px solid #afafaf;}
 
 .upload-ul{ position: relative;  display: inline-block; *display: inline; *zoom:1; max-width: 520px; padding-left: .6rem; margin-bottom: 0;}
 .upload-ul li{ position: relative; float: left; display: inline-block; width: 110px; height: 83px; margin: 0 10px 10px 0; padding: 0; border: none; cursor: pointer; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; overflow: hidden; }

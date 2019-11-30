@@ -22,6 +22,7 @@
         <div class="page page-current" id="index">
             <!-- 首页 -->
             <header class="bar bar-nav heade">
+                <input id="takepicture" type="file" accept="image/*" capture="camera" style="display: none">
                 <img src="./images/camera.png" alt="" class="pull-right camera" />
                 <h1 class="title">社区</h1>
             </header>
@@ -50,7 +51,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧</div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -72,7 +73,7 @@
                         <span>七日游</span>
                     </div>
                     <div class="card-footer no-border control">
-                        <a href="#" class="link"><img src="./images/share.png" alt="" />分享</a>
+                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
                         <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
                         <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
                     </div>
@@ -80,7 +81,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧</div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -102,7 +103,7 @@
                         <span>七日游</span>
                     </div>
                     <div class="card-footer no-border control">
-                        <a href="#" class="link"><img src="./images/share.png" alt="" />分享</a>
+                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
                         <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
                         <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
                     </div>
@@ -110,7 +111,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧</div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -132,7 +133,7 @@
                         <span>七日游</span>
                     </div>
                     <div class="card-footer no-border control">
-                        <a href="#" class="link"><img src="./images/share.png" alt="" />分享</a>
+                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
                         <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
                         <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
                     </div>
@@ -140,7 +141,7 @@
                 <div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧</div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right">+关注</a></div>
                         <div class="facebook-date date">21分钟前</div>
                         <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
                     </div>
@@ -162,20 +163,19 @@
                         <span>七日游</span>
                     </div>
                     <div class="card-footer no-border control">
-                        <a href="#" class="link"><img src="./images/share.png" alt="" />分享</a>
+                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
                         <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
                         <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
                     </div>
                 </div>
             </div>
-            <a href="#router3">登录页</a>
         </div>
     </div>
 
     <div class="page" id='router3'>
 
     </div>
-
+<!-- 发布页面 -->
     <div class="page" id='publish'>
         <header class="bar bar-nav heade2">
             <span class="icon icon-left pull-left back"></span>
@@ -199,10 +199,16 @@
                   </div>
                 </div>
             </div>
-            <h3 class="pub_title">
+            <h3 class="pub_title botom">
                 添加位置<span class="icon icon-right pull-right"></span>
                 <input type="text" value="" class="city-picker pull-right">
             </h3>
+            <h3 class="pub_title">选择标签</h3>
+            <div class="pags">
+                <a class="pag">冰川景色</a>
+                <a class="pag">探险游</a>
+                <a class="pag">七日游</a>
+            </div>
             <div class="content-block">
                 <p><a href="#" class="button button-round sure-btn">确认发布</a></p>
             </div>
@@ -234,12 +240,68 @@
             // $.router.back();
             history.go(-2);
         });
+        $('.camera').bind("click",function(){
+            $("#takepicture").click();
+        });
+
         $('.city-picker').cityPicker({
             toolbarTemplate: `<header class="bar bar-nav">
                                 <button class="button button-link pull-right close-picker">确定</button>
                                 <h1 class="title">选择收货地址</h1>
                                 </header>`
         });
+
+        $(".pag").bind("click",function(){
+            if($(this).is('.pag_on')){
+                $(this).removeClass('pag_on');
+            }
+            else{
+                $(this).addClass('pag_on');
+            }
+        })
+        $(".follow").bind("click",function(){
+            if($(this).is('.follow_on')){
+                $(this).html("+关注");
+                $(this).removeClass('follow_on');
+            }
+            else{
+                $(this).html("以关注");
+                $(this).addClass('follow_on');
+            }
+        })
+
+        $(document).on('click','.create-actions', function () {
+            var buttons1 = [
+                {
+                text: '分享到QQ',
+                onClick: function() {
+                    $.alert("你选择了“分享到QQ“");
+                }
+                },
+                {
+                text: '分享到微信',
+                onClick: function() {
+                    $.alert("你选择了“分享到微信“");
+                }
+                },
+                {
+                text: '分享到朋友圈',
+                onClick: function() {
+                    $.alert("你选择了“分享到朋友圈“");
+                }
+                }
+            ];
+            var buttons2 = [
+                {
+                text: '取消',
+                bg: 'danger'
+                }
+            ];
+            var groups = [buttons1, buttons2];
+            $.actions(groups);
+        });
+
+
         $('.info').on('keyup',function(){
 			var str = $(this).val();
 			if(str.length>500){
