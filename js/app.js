@@ -45,7 +45,39 @@
     },
     // 用户登录
     App.login = function(){
-
+        var formdata = new FormData($('#denglu')[0]);
+        if (checkRequired(formdata.get('lphone'))) {
+            $.toast('请输入手机号码');
+            return;
+        }
+        if (checkRequired(formdata.get('lpwd'))) {
+            $.toast('请输入密码');
+            return;
+        }
+        $.ajax({
+            url:'http://localhost/social/api/user_api.php',
+            type:'post',
+            data : formdata,
+            dataType:'json',
+            contentType: false,
+            processData: false,
+            timeout: 15000,	//最长请求时间：15秒
+            beforeSend: function () {
+                $.showIndicator();
+            },
+            success: function(res) {
+                $.toast(res.msg);
+                if(res.error==0){
+                    $.router.load('#index');
+                }
+            },
+            error: function () {
+                // 超时、或者请求失败执行的结果
+            },
+            complete: function () {
+                $.hideIndicator();
+            }
+        })
     },
     // 发布动态
     App.fabu = function(){

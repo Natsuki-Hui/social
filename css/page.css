@@ -22,7 +22,8 @@
 /* 登录页面样式 */
 .top{padding-top: 2rem;width: 100%;height: 12rem;background:url("../images/bg.png")no-repeat;background-size: 100%;}
 .top img{display: block;width: 4rem;margin: 0 auto;}
-.btn_bg{background: url("../images/logo_btn.png")no-repeat;background-size: 100%;width: 10rem;height: 2rem;display: block;margin: 0 auto;}
+.btn_bg{width: 10rem;height: 2rem;display: block;margin: 0 auto;}
+.btn_bg img{width: 100%;}
 .label img{margin-left: 66%;display: block;width: 1rem;}
 .list-block .item-title.label{width: 20%;}
 .log_page{background: #fff;}
