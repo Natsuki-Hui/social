@@ -19,7 +19,7 @@
             return;
         }
         $.ajax({
-            url:'http://localhost/social/api/user_api.php',
+            url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
             type:'post',
             data : formdata,
             dataType:'json',
@@ -55,7 +55,7 @@
             return;
         }
         $.ajax({
-            url:'http://localhost/social/api/user_api.php',
+            url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
             type:'post',
             data : formdata,
             dataType:'json',
@@ -115,7 +115,7 @@
         // }
         formdata.append('tag',tag);
         $.ajax({
-			url: 'http://localhost/social/api/dynamic_api.php',
+			url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
 			type: 'post',
 			data: formdata,
 			contentType: false,
