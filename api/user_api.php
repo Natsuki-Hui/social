@@ -1,11 +1,11 @@
 <?php 
 
-$conn = @mysqli_connect('localhost','root','root');
+$conn = @mysqli_connect('localhost','wd1900115','pass123456');
 if($conn == false){
     echo json_encode(['error' => 1,'msg' => '网络出小差了，请稍后再试！']);
     exit();
 }
-mysqli_select_db($conn,'social');
+mysqli_select_db($conn,'wd1900115');
 mysqli_query($conn,'set names utf8');
 if ($_POST['act']=='reg') {
     $ru = $_POST['ruser'];
@@ -34,7 +34,7 @@ if ($_POST['act']=='login'){
         echo json_encode(['error' => 1,'msg' =>$n.'不正确']);
         exit();
     }
-    echo json_encode(['error' => 0,'msg' =>'登录成功']);
+    echo json_encode(['error' => 0,'msg' =>'登录成功','data' => $info]);
 }
 
 mysqli_close($conn);
