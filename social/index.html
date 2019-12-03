@@ -15,6 +15,9 @@
     <!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css"> -->
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
     <link rel="stylesheet" href="./css/page.css">
+
+    <link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/preview.css">
 </head>
 
 <body>
@@ -25,150 +28,42 @@
                 <input id="takepicture" type="file" accept="image/*" capture="camera" style="display: none">
                 <a class="pull-right camer"><img src="./images/camera.png" alt="" class="camera"/></a>
                 <h1 class="title">社区</h1>
-            </header>
+            </header>          
+            <div class="content index-content infinite-scroll infinite-scroll-bottom" data-distance="20">
+                <div class="list-block">
+                    <div class="list-container">
+                        <!--代替ul父标签-->
+            
+                    </div>
+                </div>
+            
+                <!-- 加载提示符 -->
+                <div class="infinite-scroll-preloader">
+                    <div class="preloader">
+                    </div>
+                </div>
+            </div>
             <nav class="bar bar-tab">
-                <a class="tab-item external active" href="#">
-                    <img class="icon" src="./images/home.png" />
-                    <span class="tab-label">首页</span>
-                </a>
                 <a class="tab-item external" href="#">
                     <img class="icon" src="./images/56@3x.png" />
                     <span class="tab-label">好友</span>
-                </a>
-                <a class="tab-item external publish" href="#">
-                    <img class="icon fabu-icon" src="./images/fabu.png" />
                 </a>
                 <a class="tab-item external" href="#">
                     <img class="icon" src="./images/shequ.png" />
                     <span class="tab-label">社区</span>
                 </a>
+                <a class="tab-item external publish" href="#">
+                    <img class="icon fabu-icon" src="./images/fabu.png" />
+                </a>
                 <a class="tab-item external mine" href="#">
                     <img class="icon" src="./images/user.png">
                     <span class="tab-label">我的</span>
                 </a>
+                <a class="tab-item external active" href="#">
+                    <img class="icon" src="./images/home.png" />
+                    <span class="tab-label theme">背景</span>
+                </a>
             </nav>
-            <div class="content index-content">
-                <div class="card facebook-card">
-                    <div class="card-header no-border">
-                        <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
-                        <div class="facebook-date date">21分钟前</div>
-                        <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
-                    </div>
-                    <div class="show-img">
-                        <img src="./images/show1.png">
-                        <img src="./images/show2.png">
-                        <img src="./images/show3.png">
-                        <img src="./images/show4.png">
-                        <img src="./images/show5.png">
-                        <img src="./images/show6.png">
-                    </div>
-                    <div class="pos">
-                        <img src="./images/pos.png" class="pull-left" />
-                        冰岛
-                    </div>
-                    <div class="tag">
-                        <span>冰川景色</span>
-                        <span>探险游</span>
-                        <span>七日游</span>
-                    </div>
-                    <div class="card-footer no-border control">
-                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
-                        <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
-                        <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
-                    </div>
-                </div>
-                <div class="card facebook-card">
-                    <div class="card-header no-border">
-                        <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
-                        <div class="facebook-date date">21分钟前</div>
-                        <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
-                    </div>
-                    <div class="show-img">
-                        <img src="./images/show1.png">
-                        <img src="./images/show2.png">
-                        <img src="./images/show3.png">
-                        <img src="./images/show4.png">
-                        <img src="./images/show5.png">
-                        <img src="./images/show6.png">
-                    </div>
-                    <div class="pos">
-                        <img src="./images/pos.png" class="pull-left" />
-                        冰岛
-                    </div>
-                    <div class="tag">
-                        <span>冰川景色</span>
-                        <span>探险游</span>
-                        <span>七日游</span>
-                    </div>
-                    <div class="card-footer no-border control">
-                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
-                        <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
-                        <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
-                    </div>
-                </div>
-                <div class="card facebook-card">
-                    <div class="card-header no-border">
-                        <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
-                        <div class="facebook-date date">21分钟前</div>
-                        <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
-                    </div>
-                    <div class="show-img">
-                        <img src="./images/show1.png">
-                        <img src="./images/show2.png">
-                        <img src="./images/show3.png">
-                        <img src="./images/show4.png">
-                        <img src="./images/show5.png">
-                        <img src="./images/show6.png">
-                    </div>
-                    <div class="pos">
-                        <img src="./images/pos.png" class="pull-left" />
-                        冰岛
-                    </div>
-                    <div class="tag">
-                        <span>冰川景色</span>
-                        <span>探险游</span>
-                        <span>七日游</span>
-                    </div>
-                    <div class="card-footer no-border control">
-                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
-                        <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
-                        <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
-                    </div>
-                </div>
-                <div class="card facebook-card">
-                    <div class="card-header no-border">
-                        <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
-                        <div class="facebook-date date">21分钟前</div>
-                        <div class="desc">这里漫天凯凯白雪，这里有诗和远方。。。</div>
-                    </div>
-                    <div class="show-img">
-                        <img src="./images/show1.png">
-                        <img src="./images/show2.png">
-                        <img src="./images/show3.png">
-                        <img src="./images/show4.png">
-                        <img src="./images/show5.png">
-                        <img src="./images/show6.png">
-                    </div>
-                    <div class="pos">
-                        <img src="./images/pos.png" class="pull-left" />
-                        冰岛
-                    </div>
-                    <div class="tag">
-                        <span>冰川景色</span>
-                        <span>探险游</span>
-                        <span>七日游</span>
-                    </div>
-                    <div class="card-footer no-border control">
-                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
-                        <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
-                        <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞50</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -183,14 +78,11 @@
         </header>
         <div class="content pub_content">
             <form action="" method="post" id="pub">
+                <input type="hidden" name="act" value="pub">
                 <h3 class="pub_title">添加图片</h3>
                 <!-- 插件 -->
-                <div class="show_img">
-                    <ul class="upload-ul clearfix">
-                        <li class="upload-pick">
-                            <div class="webuploader-container clearfix" id="goodsUpload"></div>
-                        </li>
-                    </ul>
+                <div class="show_img imgFileUploade">
+                    
                 </div>
                 <h3 class="pub_title">添加文字<span>(<i>0</i>/500)</span></h3>
                 <div class="item-content">
@@ -250,7 +142,7 @@
                         </div>
                     </div>
                     <div class="more">
-                        <a>忘记密码</a>|<a class="register">注册账号</a>
+                        <a class="goindex">忘记密码</a>|<a class="register">注册账号</a>
                     </div>
                 </form>
             </div>
@@ -350,16 +242,221 @@
         </div>
     </div>
 
-    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <div class="page" id='user'>
+        <!-- 个人主页 -->
+        <header class="bar bar-nav user-bar">
+            <span class="icon icon-left pull-left goindex"></span>
+            <h1 class='title'>个人中心</h1>
+        </header>
+        <div class="content user-cont">
+            <div class="row user-row">
+                <div class="col-20"><img src="./images/tx.jpg" alt="" class="user-photo"></div>
+                <div class="col-80 mesg">
+                    <h3 class="user-name">昵称</h3>
+                    <h5>个人描述</h5>
+                </div>
+            </div>
+            <div class="content-padded grid-demo">
+                <div class="row">
+                    <div class="col-33"><span>220</span><br>关注</div>
+                    <div class="col-33"><span>220</span><br>动态</div>
+                    <div class="col-33"><span>99</span><br>粉丝</div>
+                </div>
+            </div>
+            <div class="content native-scroll user-list">
+                <div class="list-block user-block">
+                    <ul>
+                        <li>
+                            <a class="item-link item-content goModifyUser">
+                                <div class="item-inner">
+                                    <div class="item-title">个人资料</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-link item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">我的收藏</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-link item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">我的相册</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-link item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">常见问题</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-link item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">设置</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item-link item-content logout">
+                                <div class="item-inner">
+                                    <div class="item-title">注销</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <nav class="bar bar-tab">
+            <a class="tab-item external active">
+                <!-- <span class="icon icon-home"></span> -->
+                <img src="./images/home.png" alt="" class="icon">
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item external active">
+                <!-- <span class="icon icon-home"></span> -->
+                <img src="./images/users.png" alt="" class="icon">
+                <span class="tab-label">好友</span>
+            </a>
+            <a class="tab-item external active publish">
+                <img src="./images/fabu.png" alt="" class="icon fabu-icon">
+            </a>
+            <a class="tab-item external active">
+                <!-- <span class="icon icon-home"></span> -->
+                <img src="./images/shequ.png" alt="" class="icon">
+                <span class="tab-label">社区</span>
+            </a>
+            <a class="tab-item external active login">
+                <!-- <span class="icon icon-home"></span> -->
+                <img src="./images/user.png" alt="" class="icon">
+                <span class="tab-label">我的</span>
+            </a>
+        </nav>
+    </div>
+    
+    <!-- 用户详情 -->
+    <div class="page register-page" id="modifyUser">
+        <header class="bar bar-nav">
+            <span class="icon icon-left pull-left back"></span>
+            <h1 class='title'>个人资料</h1>
+        </header>
+          <div class="content">
+            <div class="list-block">
+              <ul>
+                <!-- Text inputs -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">头像</div>
+                            <div class="item-input top-img">
+                                <a><img src="./images/pic.png" alt=""></a>
+                                <input type="file" value="">
+                            </div>
+                            <span class="icon icon-right pull-right"></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                  <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                    <div class="item-inner">
+                      <div class="item-title label">昵称</div>
+                      <div class="item-input">
+                        <input type="text" placeholder="未填写" class="user-input">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                    <div class="item-inner">
+                      <div class="item-title label">性别</div>
+                      <div class="item-input">
+                        <input type="text" id="picker" class="user-input">
+                      </div>
+                      <span class="icon icon-right pull-right"></span>
+                    </div>
+                  </div>
+                </li>
+                <!-- Date -->
+                <li>
+                  <div class="item-content">
+                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                    <div class="item-inner">
+                      <div class="item-title label">生日</div>
+                      <div class="item-input">
+                        <input type="date" placeholder="Birth day" value="1999-04-08" class="user-input">
+                      </div>
+                      <span class="icon icon-right pull-right"></span>
+                    </div>
+                  </div>
+                </li>
+            </div>
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">年级</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="未填写" class="user-input">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">地区</div>
+                                <div class="item-input">
+                                    <input type="text" class='city-picker user-input' placeholder="请选择"/>
+                                </div>
+                                <span class="icon icon-right pull-right"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">学校</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="未填写" class="user-input">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <a href="#" class="alter_bg"><img src="./images/alter_btn.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='./js/zepto.min.js' charset='utf-8'></script>
     <script src="./js/jquery-1.8.3.min.js"></script>
-    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
-    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script src="./js/imgFileupload.js"></script>
+    <script src="js/mui.min.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
+    <script type="text/javascript"  src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+	<script type="text/javascript" src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
     <script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
    <!-- 正则验证 -->
     <script src="./js/common.js"></script>
-    <!-- 图片上传 -->
-    <script src="./js/webuploader.min.js"></script>
-    <script src="./js/diyUpload.js"></script>
     <!-- 引用页面主要功能 -->
     <script src="./js/app.js"></script>
     <script>
@@ -377,60 +474,209 @@
         $('.publish').bind("click",function(){
             $.router.load('#publish');
         });
-        // $('.btn_bg').bind("click",function(){
-        //     $(".phone input").val("");
-        //     $(".pwd input").val("");      
-        // });       
+        function updateUser() {
+            var name = localStorage.getItem('name');
+            var photo = localStorage.getItem('photo');
+            $('.user-photo').attr('src', photo != 'null' ? photo : './images/tx.jpg');
+            $('.user-name').html(name);
+        }
+        updateUser();
         $('.mine').bind("click",function(){
-            $.router.load('#login');
+            var uid = localStorage.getItem('uid');
+            console.log(uid);
+            if(uid>0){
+                updateUser();
+                $.router.load('#user');
+            }else{
+                $.router.load('#login');
+            }
         });
-              
+        $('.logout').bind("click", function () {
+            $.confirm('Are you sure?',
+                function () {
+                    localStorage.removeItem('uid');
+                    localStorage.removeItem('name');
+                    localStorage.removeItem('photo');
+                    $.router.load('#login');
+                },
+                function () {}
+            );
+        });
+        
+        $('.goindex').bind("click",function(){
+            $.router.load('#index');
+        });
         $('.register').bind("click",function(){
             $.router.load('#register');
         });
-
+        $(document).on('click','.imgFileUploade .header span.imgClick',function(){
+	        $('.imgFiles').click();	//没有加的话，原本要双击+才能上传
+	    });
         $('.back').bind("click",function(){
             // $.router.back();
-            history.go(-2);
+            history.go(-1);
         });
         $('.gologin').bind("click",function(){
-            // $.router.back();
+            // $.router.back();           
             $.router.load('#login');
         });
+        
+        $('.goModifyUser').bind("click",function(){
+            // $.router.back();
+            $.router.load('#modifyUser');
+        });
+
         $('.camera').parent().bind("click",function(){
             $("#takepicture").click();
+        });
+        $('.top-img a').on("click",function(){
+            $(".top-img input").click();
         });
 
         $('.city-picker').cityPicker({
             toolbarTemplate: `<header class="bar bar-nav">
                                 <button class="button button-link pull-right close-picker">确定</button>
-                                <h1 class="title">选择收货地址</h1>
+                                <h1 class="title">选择地址</h1>
                                 </header>`
         });
-
-        $(".pag").bind("click",function(){
+        $("#picker").picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+                              <button class="button button-link pull-left">按钮</button>\
+                              <button class="button button-link pull-right close-picker">确定</button>\
+                              <h1 class="title">标题</h1>\
+                              </header>',
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: ['男', '女', '保密']
+                }
+            ]
+        });
+        $(".pag").bind("click", function () {
             $(this).toggleClass('pag_on');
         });
 
-        $(document).on('click','.create-actions', function () {
+
+        $.init();
+        // 上拉加载
+        var loading = false;
+        var itemsPerLoad = 3;
+        var pn = 1;
+        function addItems(number, lastIndex) {
+            
+            // ajax异步请求数据，追加
+            // 数据请求
+            $.ajax({
+                url: 'http://localhost/social/api/dynamic_api.php',
+                type: 'post',
+                data: {
+                    pn: pn,
+                    size: itemsPerLoad,
+                    act: 'list'
+                },
+                timeout: 15000,  //最长请求时间：15秒
+                dataType: 'json',
+                beforeSend: function () {
+                    $.showIndicator();  // 迷你指示器
+                },
+                success: function (res) {
+                    pn++;
+                    var data = res.data;    // 是一个js数组
+                    if (data.length == 0) {
+                        // 没有数据
+                        return;
+                    }
+                    // 加载数据
+                    var str = '';
+                    for (var k in data) {
+                        str += `<div class="card facebook-card">
+                    <div class="card-header no-border">
+                        <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
+                        <div class="facebook-date date">${data[k].addtime}</div>
+                        <div class="desc">${data[k].descs}</div>
+                    </div>
+                    <div class="show-img">`;
+                        var pic = data[k].pic;
+                        for (var kkk in pic) {
+                            str += '<img src="uploads/' + pic[kkk] + '" data-preview-src="" data-preview-group="' + (k + 1) + '">';
+                        }
+                        str += `</div>
+                    <div class="pos">
+                        <img src="./images/pos.png" class="pull-left" />
+                        ${data[k].pos}
+                    </div>
+                    <div class="tag">`;
+                        var tag = data[k].tag;
+                        for (var kk in tag) {
+                            str += '<span>' + tag[kk] + '</span> ';
+                        }
+                        str += `</div>
+                    <div class="card-footer no-border control">
+                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
+                        <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
+                        <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞${data[k].zannum}</a>
+                    </div>
+                </div> `;
+                    }
+                    $('.index-content .list-block .list-container').append(str);
+                },
+                error: function () {
+                    // 超时、或者请求失败执行的结果
+                },
+                complete: function () {
+                    setTimeout(function () {
+                        $.hideIndicator();	// 迷你指示器
+                    }, 1000);
+                }
+            });
+        }
+        addItems(itemsPerLoad, 0);
+        // 上次加载的序号
+        var lastIndex = 3;
+        // 注册'infinite'事件(滚动事件)处理函数
+        $(document).on('infinite', '.infinite-scroll-bottom', function () {
+
+            
+            // 如果正在加载，则退出
+            if (loading) return;
+
+            // 设置flag
+            loading = true;
+
+            
+            // 模拟1s的加载过程
+            setTimeout(function () {
+                // 重置加载flag
+                loading = false;
+                // 添加新条目
+                addItems(itemsPerLoad, lastIndex);
+                // 更新最后加载的序号
+                lastIndex = $('.list-container .facebook-card').length;
+                //容器发生改变,如果是js滚动，需要刷新滚动
+                $.refreshScroller();
+            }, 1000);
+        });
+
+        $(document).on('click', '.create-actions', function () {
             var buttons1 = [
                 {
-                text: '分享到QQ',
-                onClick: function() {
-                    $.alert("你选择了“分享到QQ“");
-                }
+                    text: '分享到QQ',
+                    onClick: function () {
+                        $.alert("你选择了“分享到QQ“");
+                    }
                 },
                 {
-                text: '分享到微信',
-                onClick: function() {
-                    $.alert("你选择了“分享到微信“");
-                }
+                    text: '分享到微信',
+                    onClick: function () {
+                        $.alert("你选择了“分享到微信“");
+                    }
                 },
                 {
-                text: '分享到朋友圈',
-                onClick: function() {
-                    $.alert("你选择了“分享到朋友圈“");
-                }
+                    text: '分享到朋友圈',
+                    onClick: function () {
+                        $.alert("你选择了“分享到朋友圈“");
+                    }
                 }
             ];
             var buttons2 = [
@@ -443,6 +689,29 @@
             $.actions(groups);
         });
 
+        $(document).on('change', 'imgFiles', function () {
+            $.showIndicator();	// 迷你指示器
+        })
+        var imgFile = new ImgUploadeFiles('.show_img', function (e) {
+            this.init({
+                MAX: 3, //限制个数
+                MH: 5800, //像素限制高度
+                MW: 5900, //像素限制宽度
+                callback: function (arr) {
+                    $.hideIndicator();	// 迷你指示器
+                    // 回调
+                    // r);
+                    // r[0].src)		// base64文本（其实就是图片的内容）
+                    var id = arr[0].delId - 1;
+                    var src = arr[0].src;
+                    var textarea = document.createElement('textarea');
+                    textarea.setAttribute('name', 'pic' + id);
+                    textarea.className = 'picimg';
+                    textarea.value = src;
+                    document.getElementById('pub').append(textarea);
+                }
+            });
+        });
 
         $('.info').on('keyup',function(){
 			var str = $(this).val();
@@ -453,29 +722,50 @@
 			}else{
 				$('.pub_title span i').html(str.length);
 			}
-		});
-    })(Zepto);
-    ;(function($) {
-        //上传图片
-        var $tgaUpload = $('#goodsUpload').diyUpload({
-            url: '/uploadFilePath',
-            success: function (data) { },
-            error: function (err) { },
-            buttonText: '',
-            accept: {
-                title: "Images",
-                extensions: 'gif,jpg,jpeg,bmp,png'
-            },
-            thumb: {
-                width: 120,
-                height: 90,
-                quality: 100,
-                allowMagnify: true,
-                crop: true,
-                type: "image/jpeg"
+        });
+        function getCookie(name){
+            var cook = document.cookie;
+            cook = cook.split(';');
+            var str,arr;
+            for(var k in cook){
+                str = $.trim(cook[k]);
+                arr = str.split('=');
+                if(arr[0]==name){
+                    return arr[1];
+                }
             }
-        });    
-        $(".follow").bind("click",function(){
+        }
+        var color = getCookie('color');
+        if(color != ""){
+            $('.heade').css('background',color);
+        }
+        $('.theme').bind('click', function () {
+            $.modal({
+                title: '请选择主题',
+                text: '换个心情',
+                buttons: [
+                    {
+                        text: '蓝色主题',
+                        onClick: function () {
+                            document.cookie = 'color = #3386ff';
+                            $.toast('以更换为蓝色主题');
+                            location.reload();
+                        }
+                    },
+                    {
+                        text: '绿色主题',
+                        onClick: function () {
+                            document.cookie = 'color = #83da64';
+                            $.toast('以更换为绿色主题');
+                            location.reload();
+                        }
+                    },
+                ]
+            })
+        })
+    })(Zepto);
+    ;(function($) {  
+        $(document).on("click",".follow",function(){
             if($(this).attr('status') == 0){
                 $(this).html("以关注");
                 $(this).addClass('follow_on');
@@ -486,6 +776,31 @@
                 $(this).attr('status',0);
             }
         });
+        mui.previewImage();
+
+        $('.top-img input').change(function(e) {
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    $('.top-img a img').attr('src', this.src);
+                    console.log(this.width)
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        })
+
+        $.ajax({
+            url:'http://ip.taobao.com/service/getIpInfo.php?ip=120.236.217.94',
+            type:'get',
+            data:'',
+            dataType:'jsonp',
+            success:function(res){
+                console.log(res);
+            }
+        })
+
     })(jQuery);
     </script>
 </body>

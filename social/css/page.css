@@ -1,4 +1,5 @@
 /* 首页样式 */
+ul li{list-style: none;}
 .heade{background: #3386ff;height: 2.35rem;line-height: 2.35rem;}
 .title{color: #fff;font-size: .9rem;}
 .camera{width: 1.5rem;margin-top: .4rem;margin-right: .85rem;}
@@ -16,8 +17,26 @@
 .facebook-card .control .link{color: #afafaf;}
 .control .link img{width: 0.9rem;margin-right: .4rem;}
 .card{box-shadow: 0 0.05rem 0.1rem rgba(0,0,0,.1);}
-.index-content{margin-bottom: 3rem;}
+.index-content{padding-bottom:1.6rem ;}
+/*.facebook-card:last-child{margin-bottom: 3rem;}*/
 .camer{position: relative;z-index: 9;display: block;}
+
+.user-input{text-align: right;text-align-last: right;}
+.alter_bg{width: 10rem;height: 2rem;display: block;margin: 0 auto;}
+.alter_bg img{width: 100%;}
+.top-img img{display: block;width: 20%;border-radius: 50%;float: right;}
+.top-img input{position: absolute;top:-10000px;left: -1000000px;}
+
+.user-list{margin: 10rem 0;overflow: initial;}
+.user-cont .col-33{text-align: center;}
+.grid-demo{background: white;padding: 1rem;}
+.user-bar{background: #3386ff;}
+.user-row{background: #1c76f9;padding: 1rem 2rem;}
+.user-row img{border-radius: 50%;width: 100%;height: 100%;}
+.mesg h3{color: #fff;margin: -0.3rem 0 .8rem;}
+.mesg h5{color: #afafaf;}
+#modifyUser .pull-right{margin:0 -0.7rem 0 .7rem;}
+
 
 /* 登录页面样式 */
 .top{padding-top: 2rem;width: 100%;height: 12rem;background:url("../images/bg.png")no-repeat;background-size: 100%;}
@@ -48,14 +67,15 @@
 .pag_on{color: #fff;border: 1px solid #3386ff;background: #3386ff;}
 .follow{border: 1px solid #3386ff;width: 3.2rem;height: 1.6rem;line-height: 1.6rem;text-align: center;}
 .follow_on{color: #afafaf;border: 1px solid #afafaf;}
+.imgAll ul{padding: 0;}
 
 
 /* 上传图片样式 */
-.upload-ul{ position: relative;  display: inline-block; *display: inline; *zoom:1; max-width: 520px; padding-left: .6rem; margin-bottom: 0;}
+/* .upload-ul{ position: relative;  display: inline-block; *display: inline; *zoom:1; max-width: 520px; padding-left: .6rem; margin-bottom: 0;}
 .upload-ul li{ position: relative; float: left; display: inline-block; width: 110px; height: 83px; margin: 0 10px 10px 0; padding: 0; border: none; cursor: pointer; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; overflow: hidden; }
 .upload-pick{ background: url(../images/upload-bj.png) no-repeat 0 0; background-size: 100%;}
 /*.upload-pick:hover{ background: url(../images/upload-bj.png) no-repeat 0 -90px; }*/
-.webuploader-pick{position: relative;display: inline-block;vertical-align: top; width: 100%; height: 100%;}
+/* .webuploader-pick{position: relative;display: inline-block;vertical-align: top; width: 100%; height: 100%;}
 .webuploader-container{ position: relative; width: 100%; height: 100%; }
 .webuploader-container label{position: absolute;left: 0;top: 0;width: 100%;}
 .webuploader-element-invisible{opacity: 0;width: 100%;height: 100%;clip: rect(1px 1px 1px 1px);clip: rect(1px,1px,1px,1px);}
@@ -74,7 +94,7 @@
 .diyCancel i{ background: url(../images/upload-icon1.png) no-repeat 0 -16px; background-size: 19px;}
 .diyControl .diyRight{margin-left: 12px;}
 .diyRight i{ background: url(../images/upload-icon1.png) no-repeat 0 -38px; background-size: 21px;}
-.goods-edit .upload-tip{ font: 12px/23px "Microsoft YaHei"; color: #a3a3a3;vertical-align: top; }
+.goods-edit .upload-tip{ font: 12px/23px "Microsoft YaHei"; color: #a3a3a3;vertical-align: top; } */
 
 /* .upload-ul li{position:relative;float:left;display:inline-block;width:90px;height:68px;margin:0 10px 10px 0;padding:0;border:none;cursor:pointer;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;overflow:hidden}
 .upload-pick{background:url(../images/upload-bj.png) no-repeat 0 0;background-size: 100%;}
@@ -99,3 +119,53 @@
 .diyRight i{margin-right:3px;background:url(../images/upload-icon1.png) no-repeat 0 -22px}
 .upload-btn{display:inline-block;padding:10px 50px;font:16px/20px 'Microsoft YaHei';background:rgba(10,168,241,.7);color:#fff;border-radius:5px}
 .upload-btn:hover{background:#0aa8f1} */
+
+.imgFileUploade{
+	width: 100%;padding: 10px;
+}
+.imgFileUploade .header{
+	height: 50px;width: 100%;line-height:50px;
+	background: none;
+	position: relative;
+	z-index: 100000;
+}
+.imgFileUploade .header span{
+	display: block;float:left;
+}
+.imgFileUploade .header span.imgTitle{
+	line-height:50px;
+	display: none;
+}
+.imgFileUploade .header span.imgTitle b{
+	color:red;margin:0 5px;line-height: 57px;display: block;float: right;font-size: 20px;
+}
+.imgFileUploade .header span.imgClick{
+	width: 50px;height: 50px;margin-left: 10px;cursor: pointer;
+	background: url(../images/upload-bj.png) no-repeat center -50%;background-size:100%; 
+	position: relative;
+	z-index: 10000000;
+}
+.imgFileUploade .header span.imgcontent{
+	color:#999;margin-left:120px;line-height: 50px;
+	display: none;
+}
+.imgFileUploade .imgAll{
+	width: 100%;    margin-top: 5px;
+}
+.imgFileUploade .imgAll ul:after{ 
+		visibility: hidden;  display: block; font-size: 0; content: ".";  clear: both; height: 0
+} 
+.imgFileUploade .imgAll li{
+	width: 100px;height: 100px;border:solid 1px #ccc;margin:8px 5px;float: left;position: relative;box-shadow: 0 0 10px #eee;
+}
+.imgFileUploade .imgAll li img{
+	position: absolute;top:0;left:0;width: 100%;height: 100%;display: block;
+}
+.delImg{
+	position: absolute;top:-10px;right:-7px;width: 22px;height: 22px;background: #000;border-radius: 50%;display: block;text-align:  center;line-height: 22px;color:#fff;font-weight: 700;font-style:normal;cursor: pointer;
+}
+.picimg{
+	position: absolute;
+	top: -10000px;
+	left: -10000px;
+}

@@ -68,7 +68,13 @@
             success: function(res) {
                 $.toast(res.msg);
                 if(res.error==0){
+                    var info = res.data;
+                    $('.phone input').val("");
+                    $('.pwd input').val("");
                     $.router.load('#index');
+                    localStorage.setItem('name',info.nickname);
+                    localStorage.setItem('photo',info.photo);
+                    localStorage.setItem('uid',info.uid);
                 }
             },
             error: function () {
@@ -92,13 +98,17 @@
         }
         // var c = $('.pags span').filter('pag_on').length;
         var c = 0;
-        var tag = "";
-        $('.pags span').each(function(){
-            if($(this).isClass('pag_on')){
-                c++;
-                tag += $(this).html() + ",";
-            }
-        });
+		var tag = '';
+		$('.pags a').each(function(){
+			if($(this).hasClass('pag_on')){  // 判断span是否有active类名
+				c++;
+				tag += $(this).html()+',';
+			}
+		});
+		if(c==0){
+			$.toast('请至少选择一个标签');
+			return;	// 阻止程序运行
+		}
         // if(c==0){
         //     $.toast('请至少选择一个');
         //     return;  
@@ -119,7 +129,8 @@
                 $.toast(res.msg);
                 if(res.error==0){
                     $('#pub')[0].reset();
-                    $('.pags span').removeClass('pag_on');
+                    $('.pags a').removeClass('pag_on');
+                    $('.imgAll').html("");
                     $.router.load('#index');
                 }
 			},
