@@ -21,6 +21,8 @@ ul li{list-style: none;}
 /*.facebook-card:last-child{margin-bottom: 3rem;}*/
 .camer{position: relative;z-index: 9;display: block;}
 
+.facebook-card .control .fc{color: #3386ff;}
+
 .user-input{text-align: right;text-align-last: right;}
 .alter_bg{width: 10rem;height: 2rem;display: block;margin: 0 auto;}
 .alter_bg img{width: 100%;}
