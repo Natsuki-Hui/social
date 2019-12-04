@@ -534,49 +534,49 @@
                 },function(){});
             }    
         });
-        $(document).on("click",".follow",function(){
-            var _this = this;  
-            var uid = localStorage.getItem('uid');
-            if (uid>0){
-                var touid = $(_this).attr('touid');
-                if (uid == touid){
-                    $.toast('不能关注自己');
-                    return;
-                }
-               $.ajax({
-                    url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
-                    // url: 'http://localhost/social/api/dynamic_api.php',
-                    type: 'post',
-                    data: 'act=follow&uid='+uid+'&touid='+touid,
-                    dataType: 'json',
-                    beforeSend: function(){
-                        $.showIndicator();
-                    },
-                    success: function(res){
-                        if($(_this).attr('status') == 0){
-                            $(_this).html("以关注");
-                            $(_this).addClass('follow_on');
-                            $(_this).attr('status',1);
-                        }else{
-                            $(_this).html("+关注");
-                            $(_this).removeClass('follow_on');
-                            $(_this).attr('status',0);
-                        }
-                    },
-                    error: function(){
-                        // 超时、或者请求失败执行的结果
-                    },
-                    complete: function(){   
-                        $.hideIndicator();
-                    }
-                }); 
-           }else{
-                $.confirm('您还未登录，请先登录',function(){
+        // $(document).on("click",".follow",function(){
+        //     var _this = this;  
+        //     var uid = localStorage.getItem('uid');
+        //     if (uid>0){
+        //         var touid = $(_this).attr('touid');
+        //         if (uid == touid){
+        //             $.toast('不能关注自己');
+        //             return;
+        //         }
+        //        $.ajax({
+        //             url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
+        //             // url: 'http://localhost/social/api/dynamic_api.php',
+        //             type: 'post',
+        //             data: 'act=follow&uid='+uid+'&touid='+touid,
+        //             dataType: 'json',
+        //             beforeSend: function(){
+        //                 $.showIndicator();
+        //             },
+        //             success: function(res){
+        //                 if($(_this).attr('status') == 0){
+        //                     $(_this).html("以关注");
+        //                     $(_this).addClass('follow_on');
+        //                     $(_this).attr('status',1);
+        //                 }else{
+        //                     $(_this).html("+关注");
+        //                     $(_this).removeClass('follow_on');
+        //                     $(_this).attr('status',0);
+        //                 }
+        //             },
+        //             error: function(){
+        //                 // 超时、或者请求失败执行的结果
+        //             },
+        //             complete: function(){   
+        //                 $.hideIndicator();
+        //             }
+        //         }); 
+        //    }else{
+        //         $.confirm('您还未登录，请先登录',function(){
 
-                $.router.load('#login');
-                },function(){});
-            }   
-        });
+        //         $.router.load('#login');
+        //         },function(){});
+        //     }   
+        // });
         $('.back').bind("click",function(){
             // $.router.back();
             history.go(-1);
@@ -657,20 +657,20 @@
                         str += `<div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="${data[k].touid}" touid="${data[k].uid}">+关注</a></div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0" touid="${data[k].uid}">+关注</a></div>
                         <div class="facebook-date date">${data[k].addtime}</div>
                         <div class="desc">${data[k].descs}</div>
                     </div>
                     <div class="show-img">`;
-                        if($('.follow').attr('status') == 0){
-                            $('.follow').html("以关注");
-                            $('.follow').addClass('follow_on');
-                            $('.follow').attr('status',1);
-                        }else{
-                            $('.follow').html("+关注");
-                            $('.follow').removeClass('follow_on');
-                            $('.follow').attr('status',0);
-                        };
+                        // if($('.follow').attr('status') == 0){
+                        //     $('.follow').html("以关注");
+                        //     $('.follow').addClass('follow_on');
+                        //     $('.follow').attr('status',1);
+                        // }else{
+                        //     $('.follow').html("+关注");
+                        //     $('.follow').removeClass('follow_on');
+                        //     $('.follow').attr('status',0);
+                        // };
                         var pic = data[k].pic;
                         for (var kkk in pic){
                             str += '<img src="uploads/' + pic[kkk] + '" data-preview-src="" data-preview-group="' + (k + 1) + '">';
