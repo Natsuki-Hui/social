@@ -19,8 +19,8 @@
             return;
         }
         $.ajax({
-            // url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
-            url:'http://localhost/social/api/user_api.php',
+            url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
+            // url:'http://localhost/social/api/user_api.php',
             type:'post',
             data : formdata,
             dataType:'json',
