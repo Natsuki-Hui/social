@@ -64,13 +64,13 @@ if($_POST['act']=='pub'){
 		$data['zan'] = $zan;
 		
 
-		$touid = $data['touid'];
-		$query4 = mysqli_query($conn,"select fid from so_focus where uid = $uid and touid = $touid");
-		$follow = 0;
-		if(mysqli_num_rows($query4)>0){
-			$follow = 1;
-		}
-		$data['touid'] = $follow;
+		// $touid = $data['touid'];
+		// $query4 = mysqli_query($conn,"select fid from so_focus where uid = $uid and touid = $touid");
+		// $follow = 0;
+		// if(mysqli_num_rows($query4)>0){
+		// 	$follow = 1;
+		// }
+		// $data['touid'] = $follow;
 
 		$list[] = $data;	// $list 是三维数组
 	}
