@@ -1,11 +1,13 @@
 <?php 
 
 $conn = @mysqli_connect('localhost','wd1900115','pass123456');
+// $conn = @mysqli_connect('localhost','root','root');
 if($conn == false){
     echo json_encode(['error' => 1,'msg' => '网络出小差了，请稍后再试！']);
     exit();
 }
 mysqli_select_db($conn,'wd1900115');
+// mysqli_select_db($conn,'social');
 mysqli_query($conn,'set names utf8');
 if ($_POST['act']=='reg') {
     $ru = $_POST['ruser'];
@@ -36,6 +38,17 @@ if ($_POST['act']=='login'){
     }
     echo json_encode(['error' => 0,'msg' =>'登录成功','data' => $info]);
 }
-
+if($_POST['act']=='modi') {  
+    $uid = $_POST['uid'];
+    $Im = $_POST['img-modify'];
+    $Nm = $_POST['name-modify'];
+    $Sm = $_POST['sex-modify'];
+    $Em = $_POST['email-modify'];
+    $Tm = $_POST['txt-modify'];
+    mysqli_query($conn,"UPDATE so_user SET photo = '$Im', nickname= '$Nm',email= '$Em' ,sex= '$Sm' ,descs= '$Tm' WHERE uid = '$uid' ");
+    $query = mysqli_query($conn,"SELECT * FROM so_user WHERE uid= $uid");
+    $info = mysqli_fetch_assoc($query);
+    echo json_encode(['error' => 0,'msg' =>'修改成功','data' => $info]);
+}
 mysqli_close($conn);
 ?>

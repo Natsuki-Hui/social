@@ -347,6 +347,9 @@
             <h1 class='title'>个人资料</h1>
         </header>
           <div class="content">
+          <form action="" method="post" id="modify">
+          <input type="hidden" name="act" value="modi"/>
+          <input type="hidden" name="uid" class="uid-number"/>
             <div class="list-block">
               <ul>
                 <!-- Text inputs -->
@@ -357,7 +360,7 @@
                             <div class="item-title label">头像</div>
                             <div class="item-input top-img">
                                 <a><img src="./images/pic.png" alt=""></a>
-                                <input type="file" value="">
+                                <input type="file" value="" name='img-modify'>
                             </div>
                             <span class="icon icon-right pull-right"></span>
                         </div>
@@ -369,7 +372,7 @@
                     <div class="item-inner">
                       <div class="item-title label">昵称</div>
                       <div class="item-input">
-                        <input type="text" placeholder="未填写" class="user-input">
+                        <input type="text" class="user-input name-input" name='name-modify'>
                       </div>
                     </div>
                   </div>
@@ -380,46 +383,20 @@
                     <div class="item-inner">
                       <div class="item-title label">性别</div>
                       <div class="item-input">
-                        <input type="text" id="picker" class="user-input">
+                        <input type="text" id="picker" class="user-input sex-input" name='sex-modify'>
                       </div>
                       <span class="icon icon-right pull-right"></span>
                     </div>
                   </div>
                 </li>
                 <!-- Date -->
-                <li>
-                  <div class="item-content">
-                    <div class="item-media"><i class="icon icon-form-calendar"></i></div>
-                    <div class="item-inner">
-                      <div class="item-title label">生日</div>
-                      <div class="item-input">
-                        <input type="date" placeholder="Birth day" value="1999-04-08" class="user-input">
-                      </div>
-                      <span class="icon icon-right pull-right"></span>
-                    </div>
-                  </div>
-                </li>
-            </div>
-            <div class="list-block">
-                <ul>
                     <li>
                         <div class="item-content">
                             <div class="item-media"><i class="icon icon-form-name"></i></div>
                             <div class="item-inner">
-                                <div class="item-title label">年级</div>
+                                <div class="item-title label">邮箱</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="未填写" class="user-input">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">地区</div>
-                                <div class="item-input">
-                                    <input type="text" class='city-picker user-input' placeholder="请选择"/>
+                                    <input type="text" class='user-input email-input' name='email-modify'/>
                                 </div>
                                 <span class="icon icon-right pull-right"></span>
                             </div>
@@ -429,9 +406,9 @@
                         <div class="item-content">
                             <div class="item-media"><i class="icon icon-form-name"></i></div>
                             <div class="item-inner">
-                                <div class="item-title label">学校</div>
+                                <div class="item-title label">简介</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="未填写" class="user-input">
+                                    <textarea class="user-input txt-input" name='txt-modify'></textarea>
                                 </div>
                             </div>
                         </div>
@@ -443,6 +420,7 @@
                     <a href="#" class="alter_bg"><img src="./images/alter_btn.png" alt=""></a>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 
@@ -477,13 +455,22 @@
         function updateUser() {
             var name = localStorage.getItem('name');
             var photo = localStorage.getItem('photo');
-            $('.user-photo').attr('src', photo != 'null' ? photo : './images/tx.jpg');
+            var sex = localStorage.getItem('sex');
+            var email = localStorage.getItem('email');
+            var txt = localStorage.getItem('txt');
+            $('.user-photo').attr('src',(photo == "")||(photo == "null")?'./images/tx.jpg':photo);
             $('.user-name').html(name);
+
+            $('.name-input').val(name);
+            $('.sex-input').val(sex);
+            $('.email-input').val(email);
+            $('.txt-input').val(txt);
+            $('.top-img a img').attr('src',(photo == "")||(photo == "null")?'./images/tx.jpg':photo);
         }
         updateUser();
         $('.mine').bind("click",function(){
             var uid = localStorage.getItem('uid');
-            console.log(uid);
+            $('.uid-number').val(uid);
             if(uid>0){
                 updateUser();
                 $.router.load('#user');
@@ -492,14 +479,17 @@
             }
         });
         $('.logout').bind("click", function () {
-            $.confirm('Are you sure?',
+            $.confirm('确定要注销?',
                 function () {
                     localStorage.removeItem('uid');
                     localStorage.removeItem('name');
                     localStorage.removeItem('photo');
+                    localStorage.removeItem('sex');
+                    localStorage.removeItem('email');
+                    localStorage.removeItem('txt');
                     $.router.load('#login');
                 },
-                function () {}
+                function(){}
             );
         });
         
@@ -511,7 +501,82 @@
         });
         $(document).on('click','.imgFileUploade .header span.imgClick',function(){
 	        $('.imgFiles').click();	//没有加的话，原本要双击+才能上传
-	    });
+	    });   
+        $(document).on('click','.zan',function(){
+            var _this = this;  
+            var uid = localStorage.getItem('uid');
+            if (uid>0){
+                var id = $(_this).attr('did');
+               $.ajax({
+                    url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
+                    // url: 'http://localhost/social/api/dynamic_api.php',
+                    type: 'post',
+                    data: 'act=zan&uid='+uid+'&did='+id,
+                    dataType: 'json',
+                    beforeSend: function(){
+                        $.showIndicator();
+                    },
+                    success: function(res){
+                        $(_this).find('span').html(res.data);
+                        $(_this).toggleClass('fc');
+                    },
+                    error: function(){
+                        // 超时、或者请求失败执行的结果
+                    },
+                    complete: function(){   
+                        $.hideIndicator();
+                    }
+                }); 
+           }else{
+                $.confirm('您还未登录，请先登录',function(){
+
+                $.router.load('#login');
+                },function(){});
+            }    
+        });
+        $(document).on("click",".follow",function(){
+            var _this = this;  
+            var uid = localStorage.getItem('uid');
+            if (uid>0){
+                var touid = $(_this).attr('touid');
+                if (uid == touid){
+                    $.toast('不能关注自己');
+                    return;
+                }
+               $.ajax({
+                    url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
+                    // url: 'http://localhost/social/api/dynamic_api.php',
+                    type: 'post',
+                    data: 'act=follow&uid='+uid+'&touid='+touid,
+                    dataType: 'json',
+                    beforeSend: function(){
+                        $.showIndicator();
+                    },
+                    success: function(res){
+                        if($(_this).attr('status') == 0){
+                            $(_this).html("以关注");
+                            $(_this).addClass('follow_on');
+                            $(_this).attr('status',1);
+                        }else{
+                            $(_this).html("+关注");
+                            $(_this).removeClass('follow_on');
+                            $(_this).attr('status',0);
+                        }
+                    },
+                    error: function(){
+                        // 超时、或者请求失败执行的结果
+                    },
+                    complete: function(){   
+                        $.hideIndicator();
+                    }
+                }); 
+           }else{
+                $.confirm('您还未登录，请先登录',function(){
+
+                $.router.load('#login');
+                },function(){});
+            }   
+        });
         $('.back').bind("click",function(){
             // $.router.back();
             history.go(-1);
@@ -541,9 +606,8 @@
         });
         $("#picker").picker({
             toolbarTemplate: '<header class="bar bar-nav">\
-                              <button class="button button-link pull-left">按钮</button>\
                               <button class="button button-link pull-right close-picker">确定</button>\
-                              <h1 class="title">标题</h1>\
+                              <h1 class="title">请选择</h1>\
                               </header>',
             cols: [
                 {
@@ -555,8 +619,6 @@
         $(".pag").bind("click", function () {
             $(this).toggleClass('pag_on');
         });
-
-
         $.init();
         // 上拉加载
         var loading = false;
@@ -568,11 +630,13 @@
             // 数据请求
             $.ajax({
                 url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
+                // url: 'http://localhost/social/api/dynamic_api.php',
                 type: 'post',
                 data: {
                     pn: pn,
                     size: itemsPerLoad,
-                    act: 'list'
+                    act: 'list',
+                    uid:localStorage.getItem('uid')
                 },
                 timeout: 15000,  //最长请求时间：15秒
                 dataType: 'json',
@@ -588,17 +652,27 @@
                     }
                     // 加载数据
                     var str = '';
+
                     for (var k in data) {
                         str += `<div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0">+关注</a></div>
+                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="${data[k].touid}" touid="${data[k].uid}">+关注</a></div>
                         <div class="facebook-date date">${data[k].addtime}</div>
                         <div class="desc">${data[k].descs}</div>
                     </div>
                     <div class="show-img">`;
+                        if($('.follow').attr('status') == 0){
+                            $('.follow').html("以关注");
+                            $('.follow').addClass('follow_on');
+                            $('.follow').attr('status',1);
+                        }else{
+                            $('.follow').html("+关注");
+                            $('.follow').removeClass('follow_on');
+                            $('.follow').attr('status',0);
+                        };
                         var pic = data[k].pic;
-                        for (var kkk in pic) {
+                        for (var kkk in pic){
                             str += '<img src="uploads/' + pic[kkk] + '" data-preview-src="" data-preview-group="' + (k + 1) + '">';
                         }
                         str += `</div>
@@ -611,15 +685,16 @@
                         for (var kk in tag) {
                             str += '<span>' + tag[kk] + '</span> ';
                         }
+                        var fc = data[k].zan == 1?'fc':'';
                         str += `</div>
-                    <div class="card-footer no-border control">
-                        <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
-                        <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
-                        <a href="#" class="link"><img src="./images/zan.png" alt="" />点赞${data[k].zannum}</a>
-                    </div>
-                </div> `;
+                        <div class="card-footer no-border control">
+                            <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
+                            <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
+                            <a href="#" class="link zan ${fc}" did="${data[k].did}"><img src="./images/zan.png" alt="" />点赞<span>${data[k].zannum}</span></a>
+                        </div>
+                        </div> `;
                     }
-                    $('.index-content .list-block .list-container').append(str);
+                 $('.index-content .list-block .list-container').append(str);
                 },
                 error: function () {
                     // 超时、或者请求失败执行的结果
@@ -644,7 +719,6 @@
             // 设置flag
             loading = true;
 
-            
             // 模拟1s的加载过程
             setTimeout(function () {
                 // 重置加载flag
@@ -764,18 +838,7 @@
             })
         })
     })(Zepto);
-    ;(function($) {  
-        $(document).on("click",".follow",function(){
-            if($(this).attr('status') == 0){
-                $(this).html("以关注");
-                $(this).addClass('follow_on');
-                $(this).attr('status',1);
-            }else{
-                $(this).html("+关注");
-                $(this).removeClass('follow_on');
-                $(this).attr('status',0);
-            }
-        });
+    ;(function($) { 
         mui.previewImage();
 
         $('.top-img input').change(function(e) {

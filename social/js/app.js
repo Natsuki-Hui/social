@@ -19,7 +19,8 @@
             return;
         }
         $.ajax({
-            url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
+            // url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
+            url:'http://localhost/social/api/user_api.php',
             type:'post',
             data : formdata,
             dataType:'json',
@@ -56,6 +57,7 @@
         }
         $.ajax({
             url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
+            // url:'http://localhost/social/api/user_api.php',
             type:'post',
             data : formdata,
             dataType:'json',
@@ -75,6 +77,9 @@
                     localStorage.setItem('name',info.nickname);
                     localStorage.setItem('photo',info.photo);
                     localStorage.setItem('uid',info.uid);
+                    localStorage.setItem('sex',info.sex);
+                    localStorage.setItem('email',info.email);
+                    localStorage.setItem('txt',info.descs);
                 }
             },
             error: function () {
@@ -87,6 +92,7 @@
     },
     // 发布动态
     App.fabu = function(){
+        var uid = localStorage.getItem('uid');
         var formdata = new FormData($('#pub')[0]);    
         if (checkRequired(formdata.get('info'))) {
             $.toast('请输入文字');
@@ -114,8 +120,10 @@
         //     return;  
         // }
         formdata.append('tag',tag);
+        formdata.append('uid',uid);
         $.ajax({
-			url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
+            url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
+			// url: 'http://localhost/social/api/dynamic_api.php',
 			type: 'post',
 			data: formdata,
 			contentType: false,
@@ -142,6 +150,50 @@
 			}
 		});
     },
+    // 用户信息修改
+    App.modify = function(){
+        var formdata = new FormData($('#modify')[0]);
+        $.ajax({
+             url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
+            // url:'http://localhost/social/api/user_api.php',
+            type: 'post',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            timeout:15000,  //最长请求时间：15秒
+            dataType: 'json',
+            beforeSend: function(){
+                $.showIndicator();
+            },
+            success: function(res){
+                $.toast(res.msg);
+                if(res.error==0){
+                    var info = res.data;
+                    console.log(info);
+                    localStorage.setItem('name',info.nickname);
+                    localStorage.setItem('photo',info.photo);
+                    localStorage.setItem('uid',info.uid);
+                    localStorage.setItem('sex',info.sex);
+                    localStorage.setItem('email',info.email);
+                    localStorage.setItem('txt',info.descs);
+                    $('.user-photo').attr('src',info.photo.length != 0?info.photo:'./images/tx.jpg');
+                    $('.user-name').html(info.nickname);
+                    $.router.load('#user');    
+                    $('.name-input').val(info.nickname);
+                    $('.sex-input').val(info.sex);
+                    $('.email-input').val(info.email);
+                    $('.txt-input').val(info.descs);
+                    $('.top-img a img').attr('src',info.photo.length != 0?info.photo : './images/tx.jpg'); 
+                }
+            },
+            error: function(){
+                // 超时、或者请求失败执行的结果
+            },
+            complete: function(){   
+                $.hideIndicator();
+            }
+        });
+    }
     // 用户点赞
     App.zan = function(){
         
@@ -162,4 +214,8 @@
     $(".sure-btn").bind("click",function(){
         app.fabu();
     });
+    $(".alter_bg").bind("click",function(){
+        app.modify();
+    });
+    
 })(jQuery);
