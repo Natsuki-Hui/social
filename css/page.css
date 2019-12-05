@@ -20,6 +20,7 @@ ul li{list-style: none;}
 .index-content{padding-bottom:1.6rem ;}
 /*.facebook-card:last-child{margin-bottom: 3rem;}*/
 .camer{position: relative;z-index: 9;display: block;}
+.user-name a.follow_none{display: none;}
 
 .facebook-card .control .fc{color: #3386ff;}
 

@@ -13,7 +13,7 @@
 
     <!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
     <!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css"> -->
-    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css">
+    <link rel="stylesheet" href="./css/sm-extend.min.css">
     <link rel="stylesheet" href="./css/page.css">
 
     <link rel="stylesheet" href="css/mui.min.css">
@@ -438,6 +438,32 @@
     <!-- 引用页面主要功能 -->
     <script src="./js/app.js"></script>
     <script>
+    ;(function($) { 
+        mui.previewImage();
+
+        $('.top-img input').change(function(e) {
+            var _URL = window.URL || window.webkitURL;
+            var file, img;
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    $('.top-img a img').attr('src', this.src);
+                    console.log(this.width)
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        })
+
+        // $.ajax({
+        //     url:'http://ip.taobao.com/service/getIpInfo.php?ip=120.236.217.94',
+        //     type:'get',
+        //     data:'',
+        //     dataType:'jsonp',
+        //     success:function(res){
+        //         console.log(res);
+        //     }
+        // })
+    })(jQuery);
     ;(function($){
         $.config = {
 			// 路由功能开关过滤器，返回 false 表示当前点击链接不使用路由
@@ -450,7 +476,15 @@
 			}
 		};
         $('.publish').bind("click",function(){
-            $.router.load('#publish');
+            var uid = localStorage.getItem('uid');
+
+            if (uid<=0){
+                $.confirm('您还未登录，请先登录',function(){
+                    $.router.load('#login');
+                    },function(){});
+            }else{
+                $.router.load('#publish');
+            }
         });
         function updateUser() {
             var name = localStorage.getItem('name');
@@ -534,49 +568,6 @@
                 },function(){});
             }    
         });
-        // $(document).on("click",".follow",function(){
-        //     var _this = this;  
-        //     var uid = localStorage.getItem('uid');
-        //     if (uid>0){
-        //         var touid = $(_this).attr('touid');
-        //         if (uid == touid){
-        //             $.toast('不能关注自己');
-        //             return;
-        //         }
-        //        $.ajax({
-        //             url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
-        //             // url: 'http://localhost/social/api/dynamic_api.php',
-        //             type: 'post',
-        //             data: 'act=follow&uid='+uid+'&touid='+touid,
-        //             dataType: 'json',
-        //             beforeSend: function(){
-        //                 $.showIndicator();
-        //             },
-        //             success: function(res){
-        //                 if($(_this).attr('status') == 0){
-        //                     $(_this).html("以关注");
-        //                     $(_this).addClass('follow_on');
-        //                     $(_this).attr('status',1);
-        //                 }else{
-        //                     $(_this).html("+关注");
-        //                     $(_this).removeClass('follow_on');
-        //                     $(_this).attr('status',0);
-        //                 }
-        //             },
-        //             error: function(){
-        //                 // 超时、或者请求失败执行的结果
-        //             },
-        //             complete: function(){   
-        //                 $.hideIndicator();
-        //             }
-        //         }); 
-        //    }else{
-        //         $.confirm('您还未登录，请先登录',function(){
-
-        //         $.router.load('#login');
-        //         },function(){});
-        //     }   
-        // });
         $('.back').bind("click",function(){
             // $.router.back();
             history.go(-1);
@@ -625,7 +616,6 @@
         var itemsPerLoad = 3;
         var pn = 1;
         function addItems(number, lastIndex) {
-            
             // ajax异步请求数据，追加
             // 数据请求
             $.ajax({
@@ -646,31 +636,33 @@
                 success: function (res) {
                     pn++;
                     var data = res.data;    // 是一个js数组
-                    if (data.length == 0) {
-                        // 没有数据
-                        return;
-                    }
+                        if(data.length==0){
+                            // 没有数据
+                            // 加载完毕，则注销无限加载事件，以防不必要的加载
+                            $.detachInfiniteScroll($('.infinite-scroll'));
+                            // 删除加载提示符
+                            // $('.infinite-scroll-preloader').remove();
+                            $('.infinite-scroll-preloader').html('我是有底线的...').css('color','#999');
+                            return;
+                        }
                     // 加载数据
                     var str = '';
+                    var uid,follow_none,follow_on,follow_txt,photo
 
                     for (var k in data) {
+                        uid = localStorage.getItem('uid');
+                        follow_none = data[k].uid == uid?'follow_none':'';
+                        follow_on = data[k].touid == 1?'follow_on':'';
+                        follow_txt = data[k].touid == 1?'以关注':'+关注';
+                        photo = (data[k].photo == "")||(data[k].photo == null)?'./images/photo.png':data[k].photo;
                         str += `<div class="card facebook-card">
                     <div class="card-header no-border">
-                        <div class="facebook-avatar"><img src="./images/photo.png" width="40" height="40"></div>
-                        <div class="facebook-name user-name">夜萧<a class="follow pull-right"  status="0" touid="${data[k].uid}">+关注</a></div>
+                        <div class="facebook-avatar"><img src="${photo}" width="40" height="40"></div>
+                        <div class="facebook-name user-name">${data[k].nickname}<a class="follow pull-right ${follow_on} ${follow_none}"  status="${data[k].touid}" touid="${data[k].uid}">${follow_txt}</a></div>
                         <div class="facebook-date date">${data[k].addtime}</div>
                         <div class="desc">${data[k].descs}</div>
                     </div>
                     <div class="show-img">`;
-                        // if($('.follow').attr('status') == 0){
-                        //     $('.follow').html("以关注");
-                        //     $('.follow').addClass('follow_on');
-                        //     $('.follow').attr('status',1);
-                        // }else{
-                        //     $('.follow').html("+关注");
-                        //     $('.follow').removeClass('follow_on');
-                        //     $('.follow').attr('status',0);
-                        // };
                         var pic = data[k].pic;
                         for (var kkk in pic){
                             str += '<img src="uploads/' + pic[kkk] + '" data-preview-src="" data-preview-group="' + (k + 1) + '">';
@@ -838,33 +830,6 @@
             })
         })
     })(Zepto);
-    ;(function($) { 
-        mui.previewImage();
-
-        $('.top-img input').change(function(e) {
-            var _URL = window.URL || window.webkitURL;
-            var file, img;
-            if ((file = this.files[0])) {
-                img = new Image();
-                img.onload = function () {
-                    $('.top-img a img').attr('src', this.src);
-                    console.log(this.width)
-                };
-                img.src = _URL.createObjectURL(file);
-            }
-        })
-
-        // $.ajax({
-        //     url:'http://ip.taobao.com/service/getIpInfo.php?ip=120.236.217.94',
-        //     type:'get',
-        //     data:'',
-        //     dataType:'jsonp',
-        //     success:function(res){
-        //         console.log(res);
-        //     }
-        // })
-
-    })(jQuery);
     </script>
 </body>
 

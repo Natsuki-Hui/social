@@ -44,35 +44,32 @@ if($_POST['act']=='pub'){
 	$uid = $_POST['uid']>0?$_POST['uid']:0;
 	$size = $_POST['size'];	// 每页查询多少条数据
 	$start = ($pn-1)*$size;
-	$query = mysqli_query($conn,"select * from so_dynamic where 1 order by addtime desc limit $start,$size");
+	$query = mysqli_query($conn,"select * from so_dynamic as d left join so_user as u on d.uid=u.uid where 1 order by addtime desc limit $start,$size");
 	$list = array();
-	// $query3 = mysqli_query($conn,"select fid from so_focus where uid = $uid");
-	// echo "select fid from so_focus where uid = $uid";
+	$query2 = mysqli_query($conn,"select * from so_focus where uid = $uid");
 	while($data=mysqli_fetch_assoc($query)){
-		//$data 是每条数据
-		$data['addtime'] = format_date($data['addtime']);
-		$data['tag'] = explode(',', $data['tag']);	// 转成数组
-		$data['pic'] = explode(',', $data['pic']);
 
-		// 查询是否有状态
-		$did = $data['did'];
-		$query2 = mysqli_query($conn,"select lid from so_likes where uid = $uid and did = $did");
-		$zan = 0;
-		if(mysqli_num_rows($query2)>0){
-			$zan = 1;
-		}
-		$data['zan'] = $zan;
-		
+			//$data 是每条数据
+			$data['addtime'] = format_date($data['addtime']);
+			$data['tag'] = explode(',', $data['tag']);	// 转成数组
+			$data['pic'] = explode(',', $data['pic']);
+			// 查询是否有状态
+			$did = $data['did'];
+			$query3 = mysqli_query($conn,"select lid from so_likes where uid = $uid and did = $did");
+			$zan = 0;
+			if(mysqli_num_rows($query3)>0){
+				$zan = 1;
+			}
+			$data['zan'] = $zan;
 
-		// $touid = $data['touid'];
-		// $query4 = mysqli_query($conn,"select fid from so_focus where uid = $uid and touid = $touid");
-		// $follow = 0;
-		// if(mysqli_num_rows($query4)>0){
-		// 	$follow = 1;
-		// }
-		// $data['touid'] = $follow;
-
-		$list[] = $data;	// $list 是三维数组
+			$touid = $data['uid'];
+			$query4 = mysqli_query($conn,"select fid from so_focus where uid = $uid and touid = $touid");
+			$follow = 0;
+			if(mysqli_num_rows($query4)>0){
+				$follow = 1;
+			}
+			$data['touid'] = $follow;
+			$list[] = $data;	// $list 是三维数组	
 	}
 	echo json_encode(['error'=>0,'msg'=>'success','data'=>$list]);
 }else if($_POST['act']=='zan'){
@@ -93,22 +90,6 @@ if($_POST['act']=='pub'){
 	mysqli_query($conn,"update so_dynamic set zannum=$num where did=$did");
 	echo json_encode(['error'=>0,'msg'=>'success','data' => $num]);
 }
-// else if($_POST['act']=='follow'){
-//     $uid = $_POST['uid'];
-//     $touid = $_POST['touid'];
-
-//     $query = mysqli_query($conn,"SELECT * FROM so_focus WHERE uid=$uid and touid = $touid");
-//     if(mysqli_num_rows($query)>0) {
-//         mysqli_query($conn,"DELETE FROM so_focus WHERE uid=$uid and touid = $touid");
-//     }else{
-//         mysqli_query($conn,"INSERT INTO so_focus(uid,touid) VALUES($uid,$touid)");
-//     }
-
-//     $query2 = mysqli_query($conn,"select count(fid) as f from so_focus where touid=$touid");
-//     $cinfo = mysqli_fetch_assoc($query2);
-//     $num = $cinfo['f'];
-//     echo json_encode(['error'=>0,'msg'=>'success','data' => $num]);
-// }
 mysqli_close($conn);
 
 function format_date($time){
