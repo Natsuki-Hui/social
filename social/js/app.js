@@ -80,6 +80,7 @@
                     localStorage.setItem('sex',info.sex);
                     localStorage.setItem('email',info.email);
                     localStorage.setItem('txt',info.descs);
+                    location.reload();
                 }
             },
             error: function () {
@@ -199,8 +200,44 @@
         
     },
     // 用户关注
-    App.focus = function(){
-        
+    App.focus = function(obj){
+        var _this = obj;  
+        var uid = localStorage.getItem('uid');
+        if (uid>0){
+            var touid = $(_this).attr('touid');
+            $.ajax({
+                url: 'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
+                // url: 'http://localhost/social/api/user_api.php',
+                type: 'post',
+                data: 'act=follow&uid='+uid+'&touid='+touid,
+                dataType: 'json',
+                    beforeSend: function(){
+                        $.showIndicator();
+                    },
+                    success: function(res){
+                        if($(_this).attr('status') == 0){
+                            $(_this).html("以关注");
+                            $(_this).addClass('follow_on');
+                            $(_this).attr('status',1);
+                        }else{
+                            $(_this).html("+关注");
+                            $(_this).removeClass('follow_on');
+                            $(_this).attr('status',0);
+                        }
+                    },
+                    error: function(){
+                        // 超时、或者请求失败执行的结果
+                    },
+                    complete: function(){   
+                        $.hideIndicator();
+                    }
+                }); 
+           }else{
+                $.confirm('您还未登录，请先登录',function(){
+
+                $.router.load('#login');
+                },function(){});
+            } 
     }
 })(Zepto,window.app={});//给window自定义一个对象APP
 
@@ -216,6 +253,10 @@
     });
     $(".alter_bg").bind("click",function(){
         app.modify();
+    });
+
+    $(document).on("click",".follow",function(){
+        app.focus(this);
     });
     
 })(jQuery);
