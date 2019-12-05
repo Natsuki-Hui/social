@@ -46,7 +46,6 @@ if($_POST['act']=='pub'){
 	$start = ($pn-1)*$size;
 	$query = mysqli_query($conn,"select * from so_dynamic as d left join so_user as u on d.uid=u.uid where 1 order by addtime desc limit $start,$size");
 	$list = array();
-	$query2 = mysqli_query($conn,"select * from so_focus where uid = $uid");
 	while($data=mysqli_fetch_assoc($query)){
 
 			//$data 是每条数据
@@ -63,9 +62,9 @@ if($_POST['act']=='pub'){
 			$data['zan'] = $zan;
 
 			$touid = $data['uid'];
-			$query4 = mysqli_query($conn,"select fid from so_focus where uid = $uid and touid = $touid");
+			$query2 = mysqli_query($conn,"select * from so_focus where uid = $uid");
 			$follow = 0;
-			if(mysqli_num_rows($query4)>0){
+			if(mysqli_num_rows($query2)>0){
 				$follow = 1;
 			}
 			$data['touid'] = $follow;
