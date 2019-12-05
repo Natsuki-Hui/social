@@ -54,16 +54,25 @@ if($_POST['act']=='follow'){
     $uid = $_POST['uid'];
     $touid = $_POST['touid'];
 
-    $query = mysqli_query($conn,"SELECT * FROM so_focus WHERE uid=$uid and touid = $touid");
-    if(mysqli_num_rows($query)>0) {
-        mysqli_query($conn,"DELETE FROM so_focus WHERE uid=$uid and touid = $touid");
+    // $query = mysqli_query($conn,"SELECT * FROM so_focus WHERE uid=$uid and touid = $touid");
+    // if(mysqli_num_rows($query)>0) {
+    //     mysqli_query($conn,"DELETE FROM so_focus WHERE uid=$uid and touid = $touid");
+    // }else{
+    //     mysqli_query($conn,"INSERT INTO so_focus(uid,touid) VALUES($uid,$touid)");
+    // }
+    // $query2 = mysqli_query($conn,"select count(fid) as f from so_focus where touid=$touid");
+    // $cinfo = mysqli_fetch_assoc($query2);
+    // $num = $cinfo['f'];
+    // echo json_encode(['error'=>0,'msg'=>'success','data' => $num]);
+    $query = mysqli_query($conn,"select * from so_focus where uid=$uid and touid=$touid");
+    if(mysqli_num_rows($query)>0){
+        // 有记录，是取消关注
+        mysqli_query($conn,"delete from so_focus where uid=$uid and touid=$touid");
     }else{
-        mysqli_query($conn,"INSERT INTO so_focus(uid,touid) VALUES($uid,$touid)");
+        // 没有记录，要关注
+        mysqli_query($conn,"insert into so_focus(uid,touid) values($uid,$touid)");
     }
-    $query2 = mysqli_query($conn,"select count(fid) as f from so_focus where touid=$touid");
-    $cinfo = mysqli_fetch_assoc($query2);
-    $num = $cinfo['f'];
-    echo json_encode(['error'=>0,'msg'=>'success','data' => $num]);
+    echo json_encode(['error'=>0,'msg'=>'关注成功']);
 }
 mysqli_close($conn);
 ?>
