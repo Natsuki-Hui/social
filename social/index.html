@@ -349,7 +349,6 @@
           <div class="content">
           <form action="" method="post" id="modify">
           <input type="hidden" name="act" value="modi"/>
-          <input type="hidden" name="uid" class="uid-number"/>
             <div class="list-block">
               <ul>
                 <!-- Text inputs -->
@@ -360,7 +359,7 @@
                             <div class="item-title label">头像</div>
                             <div class="item-input top-img">
                                 <a><img src="./images/pic.png" alt=""></a>
-                                <input type="file" value="" name='img-modify'>
+                                <input type="file" value="">
                             </div>
                             <span class="icon icon-right pull-right"></span>
                         </div>
@@ -441,18 +440,31 @@
     ;(function($) { 
         mui.previewImage();
 
-        $('.top-img input').change(function(e) {
-            var _URL = window.URL || window.webkitURL;
-            var file, img;
-            if ((file = this.files[0])) {
-                img = new Image();
-                img.onload = function () {
-                    $('.top-img a img').attr('src', this.src);
-                    console.log(this.width)
-                };
-                img.src = _URL.createObjectURL(file);
-            }
-        })
+        // $('.top-img input').change(function(e) {
+        //     var _URL = window.URL || window.webkitURL;
+        //     var file, img;
+        //     if ((file = this.files[0])) {
+        //         img = new Image();
+        //         img.onload = function () {
+        //             $('.top-img a img').attr('src', this.src);
+        //             console.log(this.width)
+        //         };
+        //         img.src = _URL.createObjectURL(file);
+        //     }
+        // })
+        $(document).on('change','.top-img input',function(){
+            var reader=new FileReader();
+              reader.onload=function(){
+              var src = reader.result
+
+                $('.top-img a img').attr('src',src)
+            }  
+            // reader.readAsDataURL($('input[type=file]')[0].files[0])
+            reader.readAsDataURL(this.files[0])
+
+        //filses就是input[type=file]文件列表，files[0]就是第一个文件，这里就是将选择的第一个图片文件转化为base64的码
+        
+        }) 
 
         // $.ajax({
         //     url:'http://ip.taobao.com/service/getIpInfo.php?ip=120.236.217.94',
@@ -504,7 +516,6 @@
         updateUser();
         $('.mine').bind("click",function(){
             var uid = localStorage.getItem('uid');
-            $('.uid-number').val(uid);
             if(uid>0){
                 updateUser();
                 $.router.load('#user');
@@ -647,10 +658,11 @@
                         }
                     // 加载数据
                     var str = '';
-                    var uid,follow_none,follow_on,follow_txt,photo
+                    var uid,follow_none,follow_on,follow_txt,photo,tuid;
 
                     for (var k in data) {
                         uid = localStorage.getItem('uid');
+                        tuid = 'touid' + data[k].uid;
                         follow_none = data[k].uid == uid?'follow_none':'';
                         follow_on = data[k].touid == 1?'follow_on':'';
                         follow_txt = data[k].touid == 1?'已关注':'+关注';
@@ -658,7 +670,7 @@
                         str += `<div class="card facebook-card">
                     <div class="card-header no-border">
                         <div class="facebook-avatar"><img src="${photo}" width="40" height="40"></div>
-                        <div class="facebook-name user-name">${data[k].nickname}<a class="follow pull-right ${follow_on} ${follow_none}"  status="${data[k].touid}" touid="${data[k].uid}">${follow_txt}</a></div>
+                        <div class="facebook-name user-name">${data[k].nickname}<a class="follow pull-right ${follow_on} ${tuid} ${follow_none}"  status="${data[k].touid}" touid="${data[k].uid}">${follow_txt}</a></div>
                         <div class="facebook-date date">${data[k].addtime}</div>
                         <div class="desc">${data[k].descs}</div>
                     </div>
@@ -757,19 +769,6 @@
         $(document).on('change', 'imgFiles', function () {
             $.showIndicator();	// 迷你指示器
         })
-        //  $(document).on('change','#form1 input[type=file]',function(){
-        // var reader=new FileReader();
-        //   reader.onload=function(){
-        //   var src = reader.result
-
-        //     $('.toppot').attr('src',src)
-        // }  
-        // // reader.readAsDataURL($('input[type=file]')[0].files[0])
-        // reader.readAsDataURL(this.files[0])
-
-        // //filses就是input[type=file]文件列表，files[0]就是第一个文件，这里就是将选择的第一个图片文件转化为base64的码
-        
-        // }) 
         var imgFile = new ImgUploadeFiles('.show_img', function (e) {
             this.init({
                 MAX: 3, //限制个数
