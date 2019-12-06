@@ -62,7 +62,7 @@ if($_POST['act']=='pub'){
 			$data['zan'] = $zan;
 
 			$touid = $data['uid'];
-			$query2 = mysqli_query($conn,"select * from so_focus where uid = $uid");
+			$query2 = mysqli_query($conn,"select * from so_focus where uid = $uid and touid = $touid");
 			$follow = 0;
 			if(mysqli_num_rows($query2)>0){
 				$follow = 1;

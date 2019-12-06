@@ -216,6 +216,7 @@
                     },
                     success: function(res){
                         if($(_this).attr('status') == 0){
+                            
                             $(_this).html("以关注");
                             $(_this).addClass('follow_on');
                             $(_this).attr('status',1);
