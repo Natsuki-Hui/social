@@ -40,12 +40,12 @@ if ($_POST['act']=='login'){
 }
 if($_POST['act']=='modi') {  
     $uid = $_POST['uid'];
-    $Im = $_POST['img-modify'];
+    $Im = $_POST['src'];
     $Nm = $_POST['name-modify'];
     $Sm = $_POST['sex-modify'];
     $Em = $_POST['email-modify'];
     $Tm = $_POST['txt-modify'];
-    mysqli_query($conn,"UPDATE so_user SET photo = '$Im', nickname= '$Nm',email= '$Em' ,sex= '$Sm' ,descs= '$Tm' WHERE uid = '$uid' ");
+    mysqli_query($conn,"UPDATE so_user SET photo = '$Im', nickname= '$Nm',email= '$Em' ,sex= '$Sm' ,descs= '$Tm' WHERE uid = '$uid'");
     $query = mysqli_query($conn,"SELECT * FROM so_user WHERE uid= $uid");
     $info = mysqli_fetch_assoc($query);
     echo json_encode(['error' => 0,'msg' =>'修改成功','data' => $info]);
@@ -71,7 +71,7 @@ if($_POST['act']=='follow'){
     //     // 没有记录，要关注
     //     mysqli_query($conn,"insert into so_focus(uid,touid) values($uid,$touid)");
     // }
-    echo json_encode(['error'=>0,'msg'=>'关注成功']);
+    echo json_encode(['error'=>0,'msg'=>'关注成功','data'=> $touid]);
 }
 mysqli_close($conn);
 ?>

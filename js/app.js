@@ -154,6 +154,10 @@
     // 用户信息修改
     App.modify = function(){
         var formdata = new FormData($('#modify')[0]);
+        var uid = localStorage.getItem('uid');
+        var src = $('.top-img a img').attr('src');
+        formdata.append('src',src);
+        formdata.append('uid',uid);
         $.ajax({
              url:'http://wd1900115.pro.wdcase.com/social/api/user_api.php',
             // url:'http://localhost/social/api/user_api.php',
@@ -216,13 +220,13 @@
                     },
                     success: function(res){
                         if($(_this).attr('status') == 0){
-                            $(_this).html("已关注");
-                            $(_this).addClass('follow_on');
-                            $(_this).attr('status',1);
+                            $('.touid'+res.data).html("已关注");
+                            $('.touid'+res.data).addClass('follow_on');
+                            $('.touid'+res.data).attr('status',1);
                         }else{
-                            $(_this).html("+关注");
-                            $(_this).removeClass('follow_on');
-                            $(_this).attr('status',0);
+                            $('.touid'+res.data).html("+关注");
+                            $('.touid'+res.data).removeClass('follow_on');
+                            $('.touid'+res.data).attr('status',0);
                         }
                     },
                     error: function(){
