@@ -653,7 +653,7 @@
                         uid = localStorage.getItem('uid');
                         follow_none = data[k].uid == uid?'follow_none':'';
                         follow_on = data[k].touid == 1?'follow_on':'';
-                        follow_txt = data[k].touid == 1?'以关注':'+关注';
+                        follow_txt = data[k].touid == 1?'已关注':'+关注';
                         photo = (data[k].photo == "")||(data[k].photo == null)?'./images/photo.png':data[k].photo;
                         str += `<div class="card facebook-card">
                     <div class="card-header no-border">
@@ -757,6 +757,19 @@
         $(document).on('change', 'imgFiles', function () {
             $.showIndicator();	// 迷你指示器
         })
+        //  $(document).on('change','#form1 input[type=file]',function(){
+        // var reader=new FileReader();
+        //   reader.onload=function(){
+        //   var src = reader.result
+
+        //     $('.toppot').attr('src',src)
+        // }  
+        // // reader.readAsDataURL($('input[type=file]')[0].files[0])
+        // reader.readAsDataURL(this.files[0])
+
+        // //filses就是input[type=file]文件列表，files[0]就是第一个文件，这里就是将选择的第一个图片文件转化为base64的码
+        
+        // }) 
         var imgFile = new ImgUploadeFiles('.show_img', function (e) {
             this.init({
                 MAX: 3, //限制个数
