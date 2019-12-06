@@ -544,9 +544,9 @@
         $('.register').bind("click",function(){
             $.router.load('#register');
         });
-        $(document).on('click','.imgFileUploade .header span.imgClick',function(){
-	        $('.imgFiles').click();	//没有加的话，原本要双击+才能上传
-	    });   
+     //    $(document).on('click','.imgFileUploade .header span.imgClick',function(){
+	    //     $('.imgFiles').click();	//没有加的话，原本要双击+才能上传
+	    // });   
         $(document).on('click','.zan',function(){
             var _this = this;  
             var uid = localStorage.getItem('uid');
