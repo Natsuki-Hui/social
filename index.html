@@ -1,483 +1,535 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页-社区</title>
-    <!-- 删除默认的苹果工具栏和菜单栏，页面可以全屏展示 -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- 控制状态栏显示样式，设置为黑色 black -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>首页-社区</title>
+	<!-- 删除默认的苹果工具栏和菜单栏，页面可以全屏展示 -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- 控制状态栏显示样式，设置为黑色 black -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
-    <!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css"> -->
-    <link rel="stylesheet" href="./css/sm-extend.min.css">
-    <link rel="stylesheet" href="./css/page.css">
-
-    <link rel="stylesheet" href="css/mui.min.css">
-	<link rel="stylesheet" href="css/preview.css">
+	<!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
+	<!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css"> -->
+	<!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/??sm.min.css,sm-extend.min.css"> -->
+	<link rel="stylesheet" href="./lib/sui/css/sm.min.css">
+	<link rel="stylesheet" href="./lib/sui/css/sm-extend.min.css">
+	<link rel="stylesheet" href="css/globle.css">
+	<link rel="stylesheet" href="./css/mui.min.css">
+	<link rel="stylesheet" href="./css/imageviewer.css">
+	<link rel="stylesheet" href="css/pages.css">
+	<style type="text/css">
+		.infinite-scroll-preloader {
+			margin-top: -20px;
+		}
+		.facebook-card .control .fc{
+			color: #3386ff;
+		}
+		
+	</style>
 </head>
 
 <body>
-    <div class="page-group">
-        <div class="page page-current" id="index">
-            <!-- 首页 -->
-            <header class="bar bar-nav heade">
-                <input id="takepicture" type="file" accept="image/*" capture="camera" style="display: none">
-                <a class="pull-right camer"><img src="./images/camera.png" alt="" class="camera"/></a>
-                <h1 class="title">社区</h1>
-            </header>          
-            <div class="content index-content infinite-scroll infinite-scroll-bottom" data-distance="20">
-                <div class="list-block">
-                    <div class="list-container">
-                        <!--代替ul父标签-->
-            
-                    </div>
-                </div>
-            
-                <!-- 加载提示符 -->
-                <div class="infinite-scroll-preloader">
-                    <div class="preloader">
-                    </div>
-                </div>
-            </div>
-            <nav class="bar bar-tab">
-                <a class="tab-item external" href="#">
-                    <img class="icon" src="./images/56@3x.png" />
-                    <span class="tab-label">好友</span>
-                </a>
-                <a class="tab-item external" href="#">
-                    <img class="icon" src="./images/shequ.png" />
-                    <span class="tab-label">社区</span>
-                </a>
-                <a class="tab-item external publish" href="#">
-                    <img class="icon fabu-icon" src="./images/fabu.png" />
-                </a>
-                <a class="tab-item external mine" href="#">
-                    <img class="icon" src="./images/user.png">
-                    <span class="tab-label">我的</span>
-                </a>
-                <a class="tab-item external active" href="#">
-                    <img class="icon" src="./images/home.png" />
-                    <span class="tab-label theme">背景</span>
-                </a>
-            </nav>
-        </div>
-    </div>
+	<div class="page-group">
+		<!-- 首页 page-current（当前页） -->
+		<div class="page page-current" id="index">
+			<header class="bar bar-nav header">
+				<input type="file" accept="image/*" class="selfile">
+				<img src="images/camera.png" alt="" class="pull-right camera">
+				<h1 class="title">社区</h1>
+			</header>
 
-    <div class="page" id='router3'>
+			<!-- 内容区域 -->
+			<div class="content index-content infinite-scroll infinite-scroll-bottom" data-distance="100">
+				<div class="list-block">
+					<ul class="list-container">
 
-    </div>
-<!-- 发布页面 -->
-    <div class="page" id='publish'>
-        <header class="bar bar-nav heade2">
-            <span class="icon icon-left pull-left back"></span>
-            <h1 class="title">发布动态</h1>
-        </header>
-        <div class="content pub_content">
-            <form action="" method="post" id="pub">
-                <input type="hidden" name="act" value="pub">
-                <h3 class="pub_title">添加图片</h3>
-                <!-- 插件 -->
-                <div class="show_img imgFileUploade">
-                    
-                </div>
-                <h3 class="pub_title">添加文字<span>(<i>0</i>/500)</span></h3>
-                <div class="item-content">
-                    <div class="item-inner">
-                        <div class="item-input">
-                            <textarea placeholder="点击此处输入汉字" class="info" name="info"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <h3 class="pub_title botom">
-                    添加位置<span class="icon icon-right pull-right"></span>
-                    <input type="text" value="" name="pos" class="city-picker pull-right">
-                </h3>
-                <h3 class="pub_title">选择标签</h3>
-                <div class="pags">
-                    <a class="pag">冰川景色</a>
-                    <a class="pag">探险游</a>
-                    <a class="pag">七日游</a>
-                </div>
-                <div class="content-block">
-                    <p><a href="#" class="button button-round sure-btn">确认发布</a></p>
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <!-- 登录页面 -->
-    <div class="page log_page" id='login'>
-        <div class="content">
-            <div class="top">
-                <img src="./images/logo.png" alt="">
-            </div>
-            <div class="list-block">
-                <form action="" method="post" id="denglu">
-                    <input type="hidden" name="act" value="login" />
-                    <div class="item-inner login_inner">
-                        <div class="item-title label"><img src="./images/phone.png" alt="手机号" /></div>
-                        <div class="item-input phone">
-                            <input type="text" placeholder="输入手机号" name="lphone">
-                        </div>
-                    </div>
-                    <div class="item-inner login_inner">
-                        <div class="item-title label"><img src="./images/pwd.png" alt="密码" /></div>
-                        <div class="item-input pwd">
-                            <input type="password" placeholder="输入密码" name="lpwd">
-                        </div>
-                    </div>
-                    <div class="item-inner login_inner">
-                        <div class="item-title label"><img src="./images/yzcode.png" alt="验证码" /></div>
-                        <div class="item-input yz">
-                            <input type="text" placeholder="输入验证码">
-                        </div>
-                    </div>
-                    <div class="content-block">
-                        <div class="row">
-                            <a href="#" class="btn_bg"><img src="./images/logo_btn.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="more">
-                        <a class="goindex">忘记密码</a>|<a class="register">注册账号</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-<!-- 注册页面 -->
-    <div class="page register-page" id="register">
-        <div class="content">
-            <header class="bar bar-nav">
-                <h1 class='title'>用户注册</h1>
-            </header>
-            <div class="content">
-                <form action="" method="post" id="reg">
-                    <input type="hidden" name="act" value="reg"/>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Text inputs -->
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label">昵称</div>
-                                        <div class="item-input">
-                                            <input type="text" name="ruser" placeholder="用户名">
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-email"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label">邮箱</div>
-                                        <div class="item-input">
-                                            <input type="email" name="remail" placeholder="E-mail">
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-password"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label">密码</div>
-                                        <div class="item-input">
-                                            <input type="password" name="rpwd" placeholder="密码" class="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-gender"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label">性别</div>
-                                        <div class="item-input">
-                                            <select name="rsex">
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label">联系</div>
-                                        <div class="item-input">
-                                            <input type="text" name="rphone" placeholder="手机号">
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="align-top">
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-comment"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label">简介</div>
-                                        <div class="item-input">
-                                            <textarea placeholder="输入个人简介" name="rdesc"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="content-block">
-                        <div class="row">
-                            <div class="col-50"><a href="#" class="button button-big button-light gologin">取消</a></div>
-                            <div class="col-50"><a href="#" class="button button-big button-fill button-info regsub">提交</a></div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+						<!-- <div class="card facebook-card">
+							<div class="card-header no-border">
+								<span class="notice">+关注</span>
+								<div class="facebook-avatar"><img src="images/photo.png" width="40" height="40"></div>
+								<div class="facebook-name uname">夜萧</div>
+								<div class="facebook-date date">21分钟前</div>
+								<div class="desc">这里漫天皑皑白雪，这里有诗和远方...</div>
+								<div class="show-img">
+									<img src="images/show1.png" data-preview-src="" data-preview-group="1" alt="">
+									<img src="images/show2.png" data-preview-src="" data-preview-group="1" alt="">
+									<img src="images/show3.png" data-preview-src="" data-preview-group="1" alt="">
+									<img src="images/show4.png" data-preview-src="" data-preview-group="1" alt="">
+									<img src="images/show5.png" data-preview-src="" data-preview-group="1" alt="">
+									<img src="images/show6.png" data-preview-src="" data-preview-group="1" alt="">
+								</div>
+								<div class="pos">
+									<img src="images/pos.png" alt="" class="pull-left">
+									冰岛
+								</div>
+								<div class="tag">
+									<span>冰川景色</span>
+									<span>探险游</span>
+									<span>七日游</span>
+								</div>
+							</div>
+							<div class="card-footer no-border control">
+								<a href="#" class="link create-actions"><img src="images/share.png" alt="">分享</a>
+								<a href="#" class="link"><img src="images/com.png" alt="">评论30</a>
+								<a href="#" class="link"><img src="images/zan.png" alt="">点赞50</a>
+							</div>
+						</div> -->
 
-    <div class="page" id='user'>
-        <!-- 个人主页 -->
-        <header class="bar bar-nav user-bar">
-            <span class="icon icon-left pull-left goindex"></span>
-            <h1 class='title'>个人中心</h1>
-        </header>
-        <div class="content user-cont">
-            <div class="row user-row">
-                <div class="col-20"><img src="./images/tx.jpg" alt="" class="user-photo"></div>
-                <div class="col-80 mesg">
-                    <h3 class="user-name">昵称</h3>
-                    <h5>个人描述</h5>
-                </div>
-            </div>
-            <div class="content-padded grid-demo">
-                <div class="row">
-                    <div class="col-33"><span>220</span><br>关注</div>
-                    <div class="col-33"><span>220</span><br>动态</div>
-                    <div class="col-33"><span>99</span><br>粉丝</div>
-                </div>
-            </div>
-            <div class="content native-scroll user-list">
-                <div class="list-block user-block">
-                    <ul>
-                        <li>
-                            <a class="item-link item-content goModifyUser">
-                                <div class="item-inner">
-                                    <div class="item-title">个人资料</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="item-link item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">我的收藏</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="item-link item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">我的相册</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="item-link item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">常见问题</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="item-link item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">设置</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="item-link item-content logout">
-                                <div class="item-inner">
-                                    <div class="item-title">注销</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    
-        <nav class="bar bar-tab">
-            <a class="tab-item external active">
-                <!-- <span class="icon icon-home"></span> -->
-                <img src="./images/home.png" alt="" class="icon">
-                <span class="tab-label">首页</span>
-            </a>
-            <a class="tab-item external active">
-                <!-- <span class="icon icon-home"></span> -->
-                <img src="./images/users.png" alt="" class="icon">
-                <span class="tab-label">好友</span>
-            </a>
-            <a class="tab-item external active publish">
-                <img src="./images/fabu.png" alt="" class="icon fabu-icon">
-            </a>
-            <a class="tab-item external active">
-                <!-- <span class="icon icon-home"></span> -->
-                <img src="./images/shequ.png" alt="" class="icon">
-                <span class="tab-label">社区</span>
-            </a>
-            <a class="tab-item external active login">
-                <!-- <span class="icon icon-home"></span> -->
-                <img src="./images/user.png" alt="" class="icon">
-                <span class="tab-label">我的</span>
-            </a>
-        </nav>
-    </div>
-    
-    <!-- 用户详情 -->
-    <div class="page register-page" id="modifyUser">
-        <header class="bar bar-nav">
-            <span class="icon icon-left pull-left back"></span>
-            <h1 class='title'>个人资料</h1>
-        </header>
-          <div class="content">
-          <form action="" method="post" id="modify">
-          <input type="hidden" name="act" value="modi"/>
-            <div class="list-block">
-              <ul>
-                <!-- Text inputs -->
-                <li>
-                    <div class="item-content">
-                        <div class="item-media"><i class="icon icon-form-name"></i></div>
-                        <div class="item-inner">
-                            <div class="item-title label">头像</div>
-                            <div class="item-input top-img">
-                                <a><img src="./images/pic.png" alt=""></a>
-                                <input type="file" value="">
-                            </div>
-                            <span class="icon icon-right pull-right"></span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                  <div class="item-content">
-                    <div class="item-media"><i class="icon icon-form-name"></i></div>
-                    <div class="item-inner">
-                      <div class="item-title label">昵称</div>
-                      <div class="item-input">
-                        <input type="text" class="user-input name-input" name='name-modify'>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="item-content">
-                    <div class="item-media"><i class="icon icon-form-gender"></i></div>
-                    <div class="item-inner">
-                      <div class="item-title label">性别</div>
-                      <div class="item-input">
-                        <input type="text" id="picker" class="user-input sex-input" name='sex-modify'>
-                      </div>
-                      <span class="icon icon-right pull-right"></span>
-                    </div>
-                  </div>
-                </li>
-                <!-- Date -->
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">邮箱</div>
-                                <div class="item-input">
-                                    <input type="text" class='user-input email-input' name='email-modify'/>
-                                </div>
-                                <span class="icon icon-right pull-right"></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                            <div class="item-inner">
-                                <div class="item-title label">简介</div>
-                                <div class="item-input">
-                                    <textarea class="user-input txt-input" name='txt-modify'></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="content-block">
-                <div class="row">
-                    <a href="#" class="alter_bg"><img src="./images/alter_btn.png" alt=""></a>
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>
 
-    <script type='text/javascript' src='./js/zepto.min.js' charset='utf-8'></script>
-    <script src="./js/jquery-1.8.3.min.js"></script>
-    <script src="./js/imgFileupload.js"></script>
-    <script src="js/mui.min.js"></script>
-	<script src="js/mui.zoom.js"></script>
-	<script src="js/mui.previewimage.js"></script>
-    <script type="text/javascript"  src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
-	<script type="text/javascript" src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
-    <script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
-   <!-- 正则验证 -->
-    <script src="./js/common.js"></script>
-    <!-- 引用页面主要功能 -->
-    <script src="./js/app.js"></script>
-    <script>
-    ;(function($) { 
-        mui.previewImage();
+					</ul>
+				</div>
+				<!-- 加载提示符 -->
+				<div class="infinite-scroll-preloader">
+					<div class="preloader"></div>
+				</div>
+			</div>
 
-        // $('.top-img input').change(function(e) {
-        //     var _URL = window.URL || window.webkitURL;
-        //     var file, img;
-        //     if ((file = this.files[0])) {
-        //         img = new Image();
-        //         img.onload = function () {
-        //             $('.top-img a img').attr('src', this.src);
-        //             console.log(this.width)
-        //         };
-        //         img.src = _URL.createObjectURL(file);
-        //     }
-        // })
-        $(document).on('change','.top-img input',function(){
-            var reader=new FileReader();
-              reader.onload=function(){
-              var src = reader.result
 
-                $('.top-img a img').attr('src',src)
-            }  
-            // reader.readAsDataURL($('input[type=file]')[0].files[0])
-            reader.readAsDataURL(this.files[0])
+			<nav class="bar bar-tab">
+				<a class="tab-item external shequ" href="#">
+					<img src="images/shequ.png" alt="" class="icon">
+					<span class="tab-label">社区</span>
+				</a>
+				
+				<a class="tab-item external" href="#">
+					<img src="images/users.png" alt="" class="icon">
+					<span class="tab-label">好友</span>
+					<span class="badge">2</span>
+				</a>
+				<a class="tab-item external publish" href="#">
+					<img src="images/fabu.png" alt="" class="icon fabu-icon">
+				</a>
+				
+				<a class="tab-item external user" href="#">
+					<img src="images/user.png" alt="" class="icon">
+					<span class="tab-label">我的</span>
+				</a>
+				<a class="tab-item external active theme" href="#">
+					<!-- <span class="icon icon-home"></span> -->
+					<img src="images/home.png" alt="" class="icon">
+					<span class="tab-label">换主题</span>
+				</a>
+			</nav>
+		</div>
+		
+		<!-- 登录页 -->
+		<div class="page" id="login">
+			<!-- 你的html代码 -->
+			<div class="content login-content">
+				<div class="header-wrap">
+					<img class="mine" src="./images/avatar.jpg" alt="">
+				</div>
+				<form action="" id="login_form">
+					<input type="hidden" name="act" value="login">
+					<div class="list-block">
+						<ul>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+										<div class="item-title label"><span class="iconfont">&#xe65f;</span></div>
+										<div class="item-input">
+											<input name="phone" type="text" placeholder="输入手机号">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+										<div class="item-title label"><span class="iconfont">&#xe61b;</span></div>
+										<div class="item-input">
+											<input name="pwd" type="password" placeholder="输入密码">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+										<div class="item-title label"><span class="iconfont">&#xe623;</span></div>
+										<div class="item-input">
+											<input name="verify" type="text" placeholder="输入验证码">
+										</div>
+										<img src="api/Verify.php"
+											onclick="this.src='api/Verify.php?'+new Date().getTime();" width="100"
+											height="43" style="margin-right: 15px;" class="verify-img">
+									</div>
+								</div>
+							</li>
 
-        //filses就是input[type=file]文件列表，files[0]就是第一个文件，这里就是将选择的第一个图片文件转化为base64的码
-        
-        }) 
 
-        // $.ajax({
-        //     url:'http://ip.taobao.com/service/getIpInfo.php?ip=120.236.217.94',
-        //     type:'get',
-        //     data:'',
-        //     dataType:'jsonp',
-        //     success:function(res){
-        //         console.log(res);
-        //     }
-        // })
-    })(jQuery);
-    ;(function($){
-        $.config = {
+						</ul>
+					</div>
+				</form>
+				<p class="btn"><a href="#" class="button login">登录</a></p>
+				<p class="for"><a href="">忘记密码</a>丨<a href="" class="register">注册账号</a></p>
+			</div>
+		</div>
+
+		<!-- 发布页 -->
+		<div class="page" id="publish">
+
+			<header class="bar bar-nav header-wrap">
+				<a class="icon icon-left pull-left back"></a>
+				<h1 class="title">发布动态</h1>
+			</header>
+
+			<div class="content">
+				<form action="" id="pub_form" method="post">
+					<input type="hidden" name="act" value="pub">
+					<p class="title-wrap">添加图片</p>
+					<div class="show_img"></div>
+
+					<p class="title-wrap">添加文字<span>(<i>0</i>/500)</span></p>
+					<div class="item-content textarea-wrap">
+						<div class="item-media"><i class="icon icon-form-comment"></i></div>
+						<div class="item-inner">
+							<div class="item-input">
+								<textarea placeholder="点击此处输入文字" name="desc"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<p class="title-wrap pos">添加位置
+						<a class="icon icon-right pull-right"></a>
+						<input type="text" id='city-picker' name="pos" />
+					</p>
+
+					<div class="pub_content">
+						<p class="title-wrap pub_title">选择标签</p>
+						<div class="content-tag">
+							<div class="tag">
+								<span>冰川景色</span>
+								<span>探险游</span>
+								<span>七日游</span>
+							</div>
+						</div>
+					</div>
+				</form>
+
+				<p class="Button btn-wrap"><a href="#" class="button conpub">确定发布</a></p>
+			</div>
+		</div>
+
+		<!-- 注册表 -->
+		<div class="page register-page" id="register">
+			<div class="content">
+				<header class="bar bar-nav">
+					<h1 class='title'>用户注册</h1>
+				</header>
+				<div class="content">
+					<form action="" method="post" id="reg">
+						<input type="hidden" name="act" value="reg">
+						<div class="list-block">
+							<ul>
+								<!-- Text inputs -->
+								<li>
+									<div class="item-content">
+										<div class="item-media"><i class="icon icon-form-name"></i></div>
+										<div class="item-inner">
+											<div class="item-title label">昵称</div>
+											<div class="item-input">
+												<input type="text" name="ruser" placeholder="用户名">
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-media"><i class="icon icon-form-email"></i></div>
+										<div class="item-inner">
+											<div class="item-title label">邮箱</div>
+											<div class="item-input">
+												<input type="email" name="remail" placeholder="E-mail">
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-media"><i class="icon icon-form-password"></i></div>
+										<div class="item-inner">
+											<div class="item-title label">密码</div>
+											<div class="item-input">
+												<input type="password" name="rpwd" placeholder="密码" class="">
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-media"><i class="icon icon-form-gender"></i></div>
+										<div class="item-inner">
+											<div class="item-title label">性别</div>
+											<div class="item-input">
+												<select name="rsex">
+													<option value="男">男</option>
+													<option value="女">女</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="item-content">
+										<div class="item-media"><i class="icon icon-form-name"></i></div>
+										<div class="item-inner">
+											<div class="item-title label">联系</div>
+											<div class="item-input">
+												<input type="text" name="rphone" placeholder="手机号">
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="align-top">
+									<div class="item-content">
+										<div class="item-media"><i class="icon icon-form-comment"></i></div>
+										<div class="item-inner">
+											<div class="item-title label">简介</div>
+											<div class="item-input">
+												<textarea placeholder="输入个人简介" name="rdesc"></textarea>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="content-block">
+							<div class="row">
+								<div class="col-50"><a href="#" class="button button-big button-light cancel">取消</a>
+								</div>
+								<div class="col-50"><a href="#"
+										class="button button-big button-fill button-info regsub">提交</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- 我是谁 -->
+		<div class="page" id="mine">
+			<!-- 你的html代码 -->
+			<div class="content mine-content">
+				<div class="header-wrap">
+					<img class="photo" src="./images/avatar.jpg" alt="">
+					<span class="nickname">我是谁</span>
+					<div class="kuang">
+						<div><span class="span1">628</span><span>动态</span></div>
+						<div><span class="span2">221</span><span>粉丝</span></div>
+					</div>
+				</div>
+				<!-- <div style="clear: both;"></div> -->
+				<div class="list-block">
+					<ul>
+						<li class="item-content item-link mymsg">
+							<div class="item-media"><i class="icon icon-f7"><span class="icon icon-card"></span></i></div>
+							<div class="item-inner">
+								<div class="item-title">个人资料</div>
+							</div>
+						</li>
+						<li class="item-content item-link">
+							<div class="item-media"><i class="icon icon-f7"><span class="icon icon-browser"></span></i></div>
+							<div class="item-inner">
+								<div class="item-title">下载地址</div>
+							</div>
+						</li>
+						<li class="item-content item-link">
+							<div class="item-media"><i class="icon icon-f7"><span class="icon icon-friends"></span></i></div>
+							<div class="item-inner">
+								<div class="item-title">分享客户端</div>
+							</div>
+						</li>
+						<li class="item-content item-link">
+							<div class="item-media"><i class="icon icon-f7"><span class="icon icon-computer"></span></i></div>
+							<div class="item-inner">
+								<div class="item-title">常见问题</div>
+							</div>
+						</li>
+						<li class="item-content item-link">
+							<div class="item-media"><i class="icon icon-f7"><span class="icon icon-settings"></span></i></div>
+							<div class="item-inner">
+								<div class="item-title">设置</div>
+							</div>
+						</li>
+						<li class="item-content item-link">
+							<div class="item-media"><i class="icon icon-f7"><span class="icon icon-message"></span></i></div>
+							<div class="item-inner">
+								<div class="item-title">意见反馈</div>
+							</div>
+						</li>
+						<li class="item-content item-link logout">
+							<div class="item-media"><i class="icon icon-f7"><span class="icon icon-message"></span></i></div>
+							<div class="item-inner">
+								<div class="item-title">注销</div>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<nav class="bar bar-tab">
+				<a class="tab-item external shequ" href="#">
+					<img src="images/shequ.png" alt="" class="icon">
+					<span class="tab-label">社区</span>
+				</a>
+				
+				<a class="tab-item external" href="#">
+					<img src="images/users.png" alt="" class="icon">
+					<span class="tab-label">好友</span>
+					<span class="badge">2</span>
+				</a>
+				<a class="tab-item external publish" href="#">
+					<img src="images/fabu.png" alt="" class="icon fabu-icon">
+				</a>
+				
+				<a class="tab-item external user" href="#">
+					<img src="images/user.png" alt="" class="icon">
+					<span class="tab-label">我的</span>
+				</a>
+				<a class="tab-item external active theme" href="#">
+					<!-- <span class="icon icon-home"></span> -->
+					<img src="images/home.png" alt="" class="icon">
+					<span class="tab-label">换主题</span>
+				</a>
+			</nav>
+		</div>
+
+		<!-- 个人资料 -->
+		<div class="page" id="mymsg">
+
+			<header class="bar bar-nav header-wrap">
+				<a class="icon icon-left pull-left back"></a>
+				<h1 class="title">个人资料</h1>
+			</header>
+
+			<div class="content mymsg-content">
+				<form action="" id="msg_form">
+					<div class="list-block">
+						<ul>
+							<li class="item-content item-link">
+								<div class="item-media"><i class="icon icon-f7"></i></div>
+								<div class="item-inner">
+									<div class="item-title">头像</div>
+									<div class="item-after">
+										<img src="./images/avatar.jpg" alt="" class="avatar">
+										<input type="file" name="file" accept="images/*" class="avatar-input">
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+									<div class="item-title label">昵称</div>
+										<div class="item-input">
+											<input type="text" name="myname" class="myname" placeholder="请输入昵称">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content item-link">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+									<div class="item-title label">性别</div>
+										<div class="item-input">
+											<input type="text" name="mysex" class="mysex" value="" placeholder="请选择" id="sex-picker">
+										</div>
+									</div>
+								</div>
+							</li>
+							
+							
+						</ul>
+					</div>
+					<div class="list-block">
+						<ul>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+									<div class="item-title label">手机号</div>
+										<div class="item-input">
+											<input type="text" name="myphone" class="myphone" placeholder="请输入手机号">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+									<div class="item-title label">邮箱</div>
+										<div class="item-input">
+											<input type="text" name="myemail" class="myemail" placeholder="请输入邮箱">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-inner">
+									<div class="item-title label jianjie">简介</div>
+										<div class="item-input">
+											<textarea name="mydesc" class="mydesc" placeholder="请输入简介"></textarea>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</form>
+				
+
+				<p class="btn"><a href="#" class="button tijiao">提交</a></p>
+			</div>
+		</div>
+
+
+
+
+
+
+	</div>
+
+	<script src="./js/jquery-1.11.0.min.js"></script>
+
+
+	<!-- <script src="./js/webuploader.min.js"></script> -->
+	<!-- <script src="./js/diyUpload.js"></script> -->
+
+	<script src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script src="./js/imgFileupload.js"></script>
+	<!-- <script src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script> -->
+	<!-- <script src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script> -->
+	<script src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+	<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+
+	<script src="./js/mui.min.js"></script>
+	<script src="./js/mui.zoom.js"></script>
+	<script src="./js/mui.previewimage.js"></script>
+	<script>
+		mui.previewImage();
+	</script>
+
+	<script src="./js/common.js"></script>
+
+	<script src="./js/index.js"></script>
+	<script src="./js/publish.js"></script>
+	<!-- <script src="./js/login.js"></script> -->
+	<script src="js/app.js"></script>
+	<script>
+		$.config = {
 			// 路由功能开关过滤器，返回 false 表示当前点击链接不使用路由
 			routerFilter: function ($link) {
 				// 某个区域的 a 链接不想使用路由功能
@@ -487,361 +539,497 @@
 				return true;	// 返回true，让a链接实现路由
 			}
 		};
-        $('.publish').bind("click",function(){
-            var uid = localStorage.getItem('uid');
+	</script>
+	<script>
 
-            if (uid<=0){
-                $.confirm('您还未登录，请先登录',function(){
-                    $.router.load('#login');
-                    },function(){});
-            }else{
-                $.router.load('#publish');
-            }
-        });
-        function updateUser() {
-            var name = localStorage.getItem('name');
-            var photo = localStorage.getItem('photo');
-            var sex = localStorage.getItem('sex');
-            var email = localStorage.getItem('email');
-            var txt = localStorage.getItem('txt');
-            $('.user-photo').attr('src',(photo == "")||(photo == "null")?'./images/tx.jpg':photo);
-            $('.user-name').html(name);
+		; (function ($) {
 
-            $('.name-input').val(name);
-            $('.sex-input').val(sex);
-            $('.email-input').val(email);
-            $('.txt-input').val(txt);
-            $('.top-img a img').attr('src',(photo == "")||(photo == "null")?'./images/tx.jpg':photo);
-        }
-        updateUser();
-        $('.mine').bind("click",function(){
-            var uid = localStorage.getItem('uid');
-            if(uid>0){
-                updateUser();
-                $.router.load('#user');
-            }else{
-                $.router.load('#login');
-            }
-        });
-        $('.logout').bind("click", function () {
-            $.confirm('确定要注销?',
-                function () {
-                    localStorage.removeItem('uid');
-                    localStorage.removeItem('name');
-                    localStorage.removeItem('photo');
-                    localStorage.removeItem('sex');
-                    localStorage.removeItem('email');
-                    localStorage.removeItem('txt');
-                    $.router.load('#login');
-                },
-                function(){}
-            );
-        });
-        
-        $('.goindex').bind("click",function(){
-            $.router.load('#index');
-        });
-        $('.register').bind("click",function(){
-            $.router.load('#register');
-        });
-     //    $(document).on('click','.imgFileUploade .header span.imgClick',function(){
-	    //     $('.imgFiles').click();	//没有加的话，原本要双击+才能上传
-	    // });   
-        $(document).on('click','.zan',function(){
-            var _this = this;  
-            var uid = localStorage.getItem('uid');
-            if (uid>0){
-                var id = $(_this).attr('did');
-               $.ajax({
-                    url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
-                    // url: 'http://localhost/social/api/dynamic_api.php',
-                    type: 'post',
-                    data: 'act=zan&uid='+uid+'&did='+id,
-                    dataType: 'json',
-                    beforeSend: function(){
-                        $.showIndicator();
+			$('.publish').bind('click', function () {
+				var uid = localStorage.getItem('uid');
+				if(uid>0){
+					$.router.load("#publish");
+				}else{
+					$.router.load("#login");
+				}
+			})
+			function updateUser(){
+				var name = localStorage.getItem('name');
+				var photo = localStorage.getItem('photo');
+				var uid = localStorage.getItem('uid');
+				$('#mine .photo').attr('src',photo!='null'?'./uploads/'+photo:'images/photo.png')
+				$('#mine .nickname').html(name)
+				$.ajax({
+					url:'http://wd1900113.pro.wdcase.com/social2/api/dynamic_api.php',
+					type: 'post',
+                    dataType: 'json',  // json字符串 => json对象
+                    data: 'act=getd&uid='+uid,// 传递数据
+                    beforeSend:function(){
                     },
                     success: function(res){
-                        $(_this).find('span').html(res.data);
-                        $(_this).toggleClass('fc');
+                    	$('.mine-content .header-wrap .kuang div .span1').html(res.data[0].num);
+                    	$('.mine-content .header-wrap .kuang div .span2').html(res.data[1].num2);
                     },
                     error: function(){
-                        // 超时、或者请求失败执行的结果
                     },
-                    complete: function(){   
-                        $.hideIndicator();
+                    complete: function(){
                     }
-                }); 
-           }else{
-                $.confirm('您还未登录，请先登录',function(){
-
-                $.router.load('#login');
-                },function(){});
-            }    
-        });
-        $('.back').bind("click",function(){
-            // $.router.back();
-            history.go(-1);
-        });
-        $('.gologin').bind("click",function(){
-            // $.router.back();           
-            $.router.load('#login');
-        });
-        
-        $('.goModifyUser').bind("click",function(){
-            // $.router.back();
-            $.router.load('#modifyUser');
-        });
-
-        $('.camera').parent().bind("click",function(){
-            $("#takepicture").click();
-        });
-        $('.top-img a').on("click",function(){
-            $(".top-img input").click();
-        });
-
-        $('.city-picker').cityPicker({
-            toolbarTemplate: `<header class="bar bar-nav">
-                                <button class="button button-link pull-right close-picker">确定</button>
-                                <h1 class="title">选择地址</h1>
-                                </header>`
-        });
-        $("#picker").picker({
-            toolbarTemplate: '<header class="bar bar-nav">\
-                              <button class="button button-link pull-right close-picker">确定</button>\
-                              <h1 class="title">请选择</h1>\
-                              </header>',
-            cols: [
-                {
-                    textAlign: 'center',
-                    values: ['男', '女', '保密']
-                }
-            ]
-        });
-        $(".pag").bind("click", function () {
-            $(this).toggleClass('pag_on');
-        });
-        $.init();
-        // 上拉加载
-        var loading = false;
-        var itemsPerLoad = 3;
-        var pn = 1;
-        function addItems(number, lastIndex) {
-            // ajax异步请求数据，追加
-            // 数据请求
-            $.ajax({
-                url: 'http://wd1900115.pro.wdcase.com/social/api/dynamic_api.php',
-                // url: 'http://localhost/social/api/dynamic_api.php',
-                type: 'post',
-                data: {
-                    pn: pn,
-                    size: itemsPerLoad,
-                    act: 'list',
-                    uid:localStorage.getItem('uid')
-                },
-                timeout: 15000,  //最长请求时间：15秒
-                dataType: 'json',
-                beforeSend: function () {
-                    $.showIndicator();  // 迷你指示器
-                },
-                success: function (res) {
-                    pn++;
-                    var data = res.data;    // 是一个js数组
-                        if(data.length==0){
-                            // 没有数据
-                            // 加载完毕，则注销无限加载事件，以防不必要的加载
-                            $.detachInfiniteScroll($('.infinite-scroll'));
-                            // 删除加载提示符
-                            // $('.infinite-scroll-preloader').remove();
-                            $('.infinite-scroll-preloader').html('我是有底线的...').css('color','#999');
-                            return;
-                        }
-                    // 加载数据
-                    var str = '';
-                    var uid,follow_none,follow_on,follow_txt,photo,tuid;
-
-                    for (var k in data) {
-                        uid = localStorage.getItem('uid');
-                        tuid = 'touid' + data[k].uid;
-                        follow_none = data[k].uid == uid?'follow_none':'';
-                        follow_on = data[k].touid == 1?'follow_on':'';
-                        follow_txt = data[k].touid == 1?'已关注':'+关注';
-                        photo = (data[k].photo == "")||(data[k].photo == null)?'./images/photo.png':data[k].photo;
-                        str += `<div class="card facebook-card">
-                    <div class="card-header no-border">
-                        <div class="facebook-avatar"><img src="${photo}" width="40" height="40"></div>
-                        <div class="facebook-name user-name">${data[k].nickname}<a class="follow pull-right ${follow_on} ${tuid} ${follow_none}"  status="${data[k].touid}" touid="${data[k].uid}">${follow_txt}</a></div>
-                        <div class="facebook-date date">${data[k].addtime}</div>
-                        <div class="desc">${data[k].descs}</div>
-                    </div>
-                    <div class="show-img">`;
-                        var pic = data[k].pic;
-                        for (var kkk in pic){
-                            str += '<img src="uploads/' + pic[kkk] + '" data-preview-src="" data-preview-group="' + (k + 1) + '">';
-                        }
-                        str += `</div>
-                    <div class="pos">
-                        <img src="./images/pos.png" class="pull-left" />
-                        ${data[k].pos}
-                    </div>
-                    <div class="tag">`;
-                        var tag = data[k].tag;
-                        for (var kk in tag) {
-                            str += '<span>' + tag[kk] + '</span> ';
-                        }
-                        var fc = data[k].zan == 1?'fc':'';
-                        str += `</div>
-                        <div class="card-footer no-border control">
-                            <a href="#" class="link create-actions"><img src="./images/share.png" alt="" />分享</a>
-                            <a href="#" class="link"><img src="./images/com.png" alt="" />评论30</a>
-                            <a href="#" class="link zan ${fc}" did="${data[k].did}"><img src="./images/zan.png" alt="" />点赞<span>${data[k].zannum}</span></a>
-                        </div>
-                        </div> `;
-                    }
-                 $('.index-content .list-block .list-container').append(str);
-                },
-                error: function () {
-                    // 超时、或者请求失败执行的结果
-                },
-                complete: function () {
-                    setTimeout(function () {
-                        $.hideIndicator();	// 迷你指示器
-                    }, 1000);
-                }
-            });
-        }
-        addItems(itemsPerLoad, 0);
-        // 上次加载的序号
-        var lastIndex = 3;
-        // 注册'infinite'事件(滚动事件)处理函数
-        $(document).on('infinite', '.infinite-scroll-bottom', function () {
-
-            // 如果正在加载，则退出
-            if (loading) return;
-
-            // 设置flag
-            loading = true;
-
-            // 模拟1s的加载过程
-            setTimeout(function () {
-                // 重置加载flag
-                loading = false;
-                // 添加新条目
-                addItems(itemsPerLoad, lastIndex);
-                // 更新最后加载的序号
-                lastIndex = $('.list-container .facebook-card').length;
-                //容器发生改变,如果是js滚动，需要刷新滚动
-                $.refreshScroller();
-            }, 1000);
-        });
-
-        $(document).on('click', '.create-actions', function () {
-            var buttons1 = [
-                {
-                    text: '分享到QQ',
-                    onClick: function () {
-                        $.alert("你选择了“分享到QQ“");
-                    }
-                },
-                {
-                    text: '分享到微信',
-                    onClick: function () {
-                        $.alert("你选择了“分享到微信“");
-                    }
-                },
-                {
-                    text: '分享到朋友圈',
-                    onClick: function () {
-                        $.alert("你选择了“分享到朋友圈“");
-                    }
-                }
-            ];
-            var buttons2 = [
-                {
-                text: '取消',
-                bg: 'danger'
-                }
-            ];
-            var groups = [buttons1, buttons2];
-            $.actions(groups);
-        });
-
-        $(document).on('change', 'imgFiles', function () {
-            $.showIndicator();	// 迷你指示器
-        })
-        var imgFile = new ImgUploadeFiles('.show_img', function (e) {
-            this.init({
-                MAX: 3, //限制个数
-                MH: 5800, //像素限制高度
-                MW: 5900, //像素限制宽度
-                callback: function (arr) {
-                    $.hideIndicator();	// 迷你指示器
-                    // 回调
-                    // r);
-                    // r[0].src)		// base64文本（其实就是图片的内容）
-                    var id = arr[0].delId - 1;
-                    var src = arr[0].src;
-                    var textarea = document.createElement('textarea');
-                    textarea.setAttribute('name', 'pic' + id);
-                    textarea.className = 'picimg';
-                    textarea.value = src;
-                    document.getElementById('pub').append(textarea);
-                }
-            });
-        });
-
-        $('.info').on('keyup',function(){
-			var str = $(this).val();
-			if(str.length>500){
-				$.toast("字数不能超过500");
-				$(this).val(str.substr(0,500));
-				return;
-			}else{
-				$('.pub_title span i').html(str.length);
+                });
 			}
-        });
-        function getCookie(name){
-            var cook = document.cookie;
-            cook = cook.split(';');
-            var str,arr;
-            for(var k in cook){
-                str = $.trim(cook[k]);
-                arr = str.split('=');
-                if(arr[0]==name){
-                    return arr[1];
-                }
-            }
-        }
-        var color = getCookie('color');
-        if(color != ""){
-            $('.heade').css('background',color);
-        }
-        $('.theme').bind('click', function () {
-            $.modal({
-                title: '请选择主题',
-                text: '换个心情',
-                buttons: [
-                    {
-                        text: '蓝色主题',
-                        onClick: function () {
-                            document.cookie = 'color = #3386ff';
-                            $.toast('以更换为蓝色主题');
-                            location.reload();
-                        }
-                    },
-                    {
-                        text: '绿色主题',
-                        onClick: function () {
-                            document.cookie = 'color = #83da64';
-                            $.toast('以更换为绿色主题');
-                            location.reload();
-                        }
-                    },
-                ]
-            })
-        })
-    })(Zepto);
-    </script>
+			updateUser()
+			$('.user').bind('click', function () {
+				var uid = localStorage.getItem('uid');
+				if(uid>0){
+					updateUser()
+					$.router.load('#mine');		// 打开个人主页面
+				}else{
+					$.router.load('#login');		// 打开登录页面
+				}
+			})
+
+			$('.register').bind('click', function () {
+				$.router.load("#register");
+			})
+
+			// $('.back').on('click', function () {
+			// 	$.router.back()
+			// })
+
+			$('.cancel').click(function () {
+				$.router.load("#login");
+			})
+
+			// $('.mine').click(function () {
+			// 	$.router.load("#mine");
+			// })
+
+			$('.mymsg').click(function () {
+				$.router.load("#mymsg");
+			})
+
+			// $('.index').click(function () {
+			// 	$.router.load("#index");
+			// })
+
+			// 日历
+			$("#my-rili").calendar({
+			    value: ['2019-12-03']
+			});
+
+			$('.shequ').bind('click',function(){
+				// 手机点击事件
+				$.router.load('#index');
+			});
+
+			// 切换主题
+			$('.theme').bind('click',function(){
+
+				// 先设置时间
+				var d = new Date();	// 日期对象（默认是当前时间）
+				d.setTime( d.getTime()+(8*3600*1000)+(30*1000) );	// 更改为30秒的时间
+				console.log(d.toGMTString());
+
+				$.modal({
+					title:  '请选择主题',
+					text: '换个心情...',
+					buttons: [
+					{
+						text: '蓝色主题',
+						onClick: function() {
+			            // 设置蓝色（使用cookie记录下来）
+			            document.cookie = "color=#3386ff;expires="+d.toGMTString();
+			            document.cookie = "name=蓝色";
+
+			            // 这里只是交互的操作
+			            $('#index .header').css('background','#3386ff');
+			            $.toast('已更换蓝色主题');
+			        }
+			    },
+			    {
+			    	text: '绿色主题',
+			    	onClick: function() {
+			            // 设置绿色（使用cookie记录下来）
+			            document.cookie = "color=#83da64;expires="+d.toGMTString();
+			            document.cookie = "name=绿色";
+
+			            // 这里只是交互的操作
+			            $('#index .header').css('background','#83da64');
+			            $.toast('已更换绿色主题');
+			        }
+			    }
+			    ]
+			})
+			});
+
+			$('.logout').bind('click',function(){
+				$.confirm('您真的要注销吗？',
+					function () {
+						// 点击确认，清除记录
+						localStorage.removeItem('name');
+						localStorage.removeItem('photo');
+						localStorage.removeItem('uid');
+
+						// localStorage.clear();	// 清除全部
+						
+						// 退回到登录页
+						$.router.load('#login');
+					},
+					function () {
+						// 点击取消，不需要做
+					}
+				);
+			})
+			
+
+			// 刷新页面，要获取所记录的cookie
+			function getcookie(name){
+				// 带
+				var cook = document.cookie;
+				// console.log(cook);
+				cook = cook.split(';');  // 分割字符串
+				var str,arr;
+				for(var k in cook){
+					str = $.trim(cook[k]);	// 去掉空格
+					arr = str.split('=');
+					if(arr[0]==name){
+						return arr[1];
+					}
+				}
+			}
+			var color = getcookie('color');		// 获取cookie的数据
+			console.log(color);
+			if(color!=''){  // 颜色不为空，有cookie记录
+				$('#index .header').css('background',color);
+			}
+
+
+			$.init();
+			// 加载flag
+			var loading = false;
+			// 最多可加载的条目
+			var maxItems = 5;
+
+			// 每次加载添加多少条目
+			var itemsPerLoad = 3;
+
+			// 页码
+			var pn = 1;
+
+			function addItems(number, lastIndex) {
+				// // 生成新条目的HTML
+				// var html = '';
+				// for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+				// 	html += '<li class="item-content"><div class="item-inner"><div class="item-title">Item ' + i + '</div></div></li>';
+				// }
+				// // 添加新条目
+				// $('.infinite-scroll-bottom .list-container').append(html);
+
+
+
+
+				$.ajax({
+					url: 'http://wd1900113.pro.wdcase.com/social2/api/dynamic_api.php',
+					type: 'post',
+					data: {
+						pn: pn,
+						size: itemsPerLoad,
+						act: 'list',
+						uid:localStorage.getItem('uid')
+					},
+					timeout: 15000,	//最长请求时间：15秒
+					dataType: 'json',
+					beforeSend: function () {
+						// $.showIndicator();	// 迷你指示器
+					},
+					success: function (res) {
+
+						pn++;
+
+						var data = res.data[0];	// 是一个js数组
+						var row = res.data[1];	// 是一个js数组
+						if(data==null){
+							// 没有数据
+							// 加载完毕，则注销无限加载事件，以防不必要的加载
+							$.detachInfiniteScroll($('.infinite-scroll'));
+							// 删除加载提示符
+							// $('.infinite-scroll-preloader').remove();
+							$('.infinite-scroll-preloader').html('我是有底线的...').css('color','#999');
+							return;
+						}
+						// console.log(data)
+						// 加载数据
+						var str = '';
+						for (var k in data) {
+							var noshow=localStorage.getItem('uid')==data[k].uid?'noshow':''
+							var hui=data[k].gz==1?'hui':''
+							var gzval=data[k].gz==1?'已关注':'+关注'
+							var photo=data[k].photo==null?'images/photo.png':'uploads/'+data[k].photo
+							str += `
+								<div class="card facebook-card">
+									<div class="card-header no-border">
+										<span class="notice ${noshow} ${hui}" uid="${data[k].uid}" status="0">${gzval}</span>
+										<div class="facebook-avatar"><img src="${photo}" width="40" height="40"></div>
+										<div class="facebook-name uname">${data[k].nickname}</div>
+										<div class="facebook-date date">${data[k].addtime}</div>
+										<div class="desc">${row[k].descs}</div>
+										<div class="show-img">`;
+
+							var pic = data[k].pic;
+							for (var kkk in pic) {
+								str += '<img src="uploads/' + pic[kkk] + '" alt="" data-preview-src="" data-preview-group="' + (k + 1) + '" style="width:74px; height: 74px;"> ';
+							}
+
+							str += `
+										</div>
+										<div class="pos">
+											<img src="images/pos.png" alt="" class="pull-left">
+											${data[k].pos}
+										</div>
+										<div class="tag">`;
+
+							var tag = data[k].tag;
+							for (var kk in tag) {
+								str += '<span>' + tag[kk] + '</span> ';
+							}
+							// <span>冰川景色</span>
+							// <span>探险游</span>
+							// <span>七日游</span>
+
+							var fc=data[k].zan==1?'fc':'';
+							str += `
+										</div>
+									</div>
+									<div class="card-footer no-border control">
+										<a href="#" class="link create-actions"><img src="images/share.png" alt="">分享</a>
+										<a href="#" class="link"><img src="images/com.png" alt="">评论30</a>
+										<a href="#" class="link zan ${fc}" did="${data[k].did}"><img src="images/zan.png" alt="">点赞<span>${data[k].zannum}</span></a>
+									</div>
+								</div>
+							`
+						}
+
+						// 添加新条目
+						$('.index-content .list-block .list-container').append(str);
+					},
+					error: function () {
+						// 超时、或者请求失败执行的结果
+					},
+					complete: function () {
+						// setTimeout(function(){
+						// 	$.hideIndicator();	// 迷你指示器
+						// },1000);
+					}
+				});
+
+
+
+			}
+			//预先加载3条
+			addItems(itemsPerLoad, 0);
+
+
+			// 上次加载的序号
+
+			var lastIndex = 3;
+
+			// 注册'infinite'事件处理函数
+			$(document).on('infinite', '.infinite-scroll-bottom', function () {
+
+				// 如果正在加载，则退出
+				if (loading) return;
+
+				// 设置flag
+				loading = true;
+
+				// 模拟1s的加载过程
+				setTimeout(function () {
+					// 重置加载flag
+					loading = false;
+
+					// if (lastIndex >= maxItems) {
+					// 	// alert(1)
+					// 	// 加载完毕，则注销无限加载事件，以防不必要的加载
+					// 	$.detachInfiniteScroll($('.infinite-scroll'));
+					// 	// 删除加载提示符
+					// 	$('.infinite-scroll-preloader').remove();
+					// 	return;
+					// }
+
+					// 添加新条目
+					addItems(itemsPerLoad, lastIndex);
+					// 更新最后加载的序号
+					lastIndex = $('.list-container .facebook-card').length;
+					//容器发生改变,如果是js滚动，需要刷新滚动
+					$.refreshScroller();
+				}, 1000);
+			});
+
+
+			$("#sex-picker").picker({
+				toolbarTemplate: '<header class="bar bar-nav">\
+				<button class="button button-link pull-right close-picker">确定</button>\
+				<h1 class="title">请选择性别</h1>\
+				</header>',
+				cols: [
+					{
+						textAlign: 'center',
+						values: ['男', '女', '保密']
+					}
+				]
+			});
+
+		})(Zepto)
+
+			; (function ($) {
+
+				$('.avatar').click(function(){
+					$('.avatar-input').click()
+				})
+				$('.avatar-input').change(function(){
+					// 获取上传文件对象
+					var file = $(this)[0].files[0];
+				    // 读取文件URL
+				    var reader = new FileReader();
+				    reader.readAsDataURL(file);
+				    // 阅读文件完成后触发的事件
+				    reader.onload = function () {
+			        // 读取的URL结果：this.result
+			        $(".avatar").attr("src", this.result);//avatar_img  img标签的ID
+
+			        var textarea = document.createElement('textarea');
+                    textarea.setAttribute('name','pic');
+                    textarea.className = 'picimg';
+                    textarea.value = $(".avatar").attr('src')
+                    document.getElementById('msg_form').append(textarea);
+			    	}
+				})
+
+
+				
+
+
+
+
+			})(jQuery)
+
+			;(function($){
+				//个人资料
+				function getmymsg(){
+					var uid = localStorage.getItem('uid');
+					//获取个人资料
+					$.ajax({
+			            url:'http://wd1900113.pro.wdcase.com/social2/api/user_api.php',
+			            type: 'post',
+			            dataType: 'json',  // json字符串 => json对象
+			            data: 'uid='+uid,// 传递数据
+			            success: function(res){
+			                if(res.error==0){
+			                    var info=res.data
+			                    // localStorage.setItem('name',info.nickname)
+			                    // localStorage.setItem('photo',info.photo)
+			                    // localStorage.setItem('sex',info.sex)
+			                    // localStorage.setItem('phone',info.phone)
+			                    // localStorage.setItem('email',info.email)
+			                    // localStorage.setItem('desc',info.descs)
+
+			                 //    var name = localStorage.getItem('name');
+			                 //    var photo = './uploads/'+localStorage.getItem('photo');
+			                 //    var sex = localStorage.getItem('sex');
+				                // var phone = localStorage.getItem('phone');
+				                // var email = localStorage.getItem('email');
+				                // var desc = localStorage.getItem('desc');
+				                var photo=info.photo!=null?'./uploads/'+info.photo:'images/photo.png'
+				                $('.mymsg-content .avatar').attr('src',photo)
+				                $('.mymsg-content .myname').val(info.nickname)
+				                $('.mymsg-content .mysex').val(info.sex)
+				                $('.mymsg-content .myphone').val(info.phone)
+				                $('.mymsg-content .myemail').val(info.email)
+				                $('.mymsg-content .mydesc').val(info.descs)
+
+			                    $('#mine .photo').attr('src',photo)
+			                    $('#mine .nickname').html(info.nickname)
+			                }
+			            },
+			            error: function(){
+			            }
+			            
+			        });
+
+				}
+				getmymsg()
+
+				$('.mymsg').click(function(){
+					getmymsg()
+					
+		        })
+
+
+
+		        $('.tijiao').click(function(){
+			        var uid=localStorage.getItem('uid');
+			        var formdata=new FormData($('#msg_form')[0])
+			        formdata.append('act','update')
+			        formdata.append('uid',uid)
+			        // console.log(formdata.get('file'))
+			        // console.log(formdata.get('pic'))
+			        // console.log(formdata.get('myname'))
+			        // console.log(formdata.get('mysex'))
+			        // console.log(formdata.get('myphone'))
+			        // console.log(formdata.get('myemail'))
+			        // console.log(formdata.get('mydesc'))
+			        // console.log(formdata.get('uid'))
+			        // console.log(formdata.get('act'))
+			        $.ajax({
+			            url:'http://wd1900113.pro.wdcase.com/social2/api/user_api.php',
+			            type: 'post',
+			            dataType: 'json',  // json字符串 => json对象
+			            data: formdata,// 传递数据
+			            contentType: false,
+			            processData: false,
+			            timeout:15000,  //最长请求时间：15秒
+			            beforeSend: function(){
+			                $.showIndicator();
+			            },
+			            success: function(res){
+			                // console.log(res)
+			                $.toast(res.msg)
+			                if(res.error==0){
+			                    var info=res.data
+			                    // console.log(info)
+			                    localStorage.setItem('name',info.nickname)
+			                    localStorage.setItem('photo',info.photo)
+			                    // localStorage.setItem('sex',info.sex)
+			                    // localStorage.setItem('phone',info.phone)
+			                    // localStorage.setItem('email',info.email)
+			                    // localStorage.setItem('desc',info.descs)
+
+			                    // var name = localStorage.getItem('name');
+			                    // var photo = './uploads/'+localStorage.getItem('photo');
+			                    var photo=info.photo!=null?'./uploads/'+info.photo:'images/photo.png'
+			                    $('#mine .photo').attr('src',photo)
+			                    $('#mine .nickname').html(info.nickname)
+
+
+			                    // setTimeout(function(){
+			                    //     $.router.load('#login')
+			                    // },2000)
+			                }
+			            },
+			            error: function(){
+			            },
+			            complete: function(){
+			                setTimeout(function(){
+			                    $.hideIndicator()
+			                },1000)
+			            }
+			        });
+		        })
+
+		        
+		        	
+		        
+			})(Zepto)
+	</script>
+
 </body>
 
 </html>

@@ -57,10 +57,10 @@ function checkRequired(text){
 }
 
 /***
- * 密码验证（数字）
+ * 整数+小数验证（小数点后1-2位）
  */
-function checkPwd(text){
-	if(/^\w{6,12}$/.test(text)){
+function checkFloat(number){
+	if(/^[0-9]+(.[0-9]{1,2})?$/.test(number)){
 		return true;
 	}else{
 		return false;
@@ -68,10 +68,10 @@ function checkPwd(text){
 }
 
 /***
- * 整数+小数验证（小数点后1-2位）
+ * 密码验证(格式为6-12位，只能是字母、数字和下划线)
  */
-function checkFloat(number){
-	if(/^[0-9]+(.[0-9]{1,2})?$/.test(number)){
+function checkPwd(text){
+	if(/^\w{6,12}$/.test(text)){
 		return true;
 	}else{
 		return false;

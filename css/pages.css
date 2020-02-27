@@ -1,0 +1,651 @@
+@font-face {
+	font-family: 'iconfont';
+	src: url('../font/iconfont.eot');
+	src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+		url('../font/iconfont.woff2') format('woff2'),
+		url('../font/iconfont.woff') format('woff'),
+		url('../font/iconfont.ttf') format('truetype'),
+		url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 1rem;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #3268fd;
+}
+
+
+
+
+
+/**
+ * 首页样式
+ */
+.header {
+	background: #3386ff;
+	height: 2.35rem;
+	/* 94/4 */
+}
+
+.title {
+	color: #fff;
+	font-size: .9rem;
+}
+
+.camera {
+	width: 1.5rem;
+	margin-top: .4rem;
+	margin-right: .45rem;
+}
+
+.bar-tab .tab-item .fabu-icon {
+	height: 2.2rem;
+}
+
+.facebook-card .uname {
+	font-size: .8rem;
+	margin-left: 2.6rem;
+}
+
+.facebook-card .date {
+	font-size: .55rem;
+	color: #afafaf;
+	margin-left: 2.6rem;
+}
+
+.facebook-card .desc {
+	font-size: .8rem;
+	color: #4d5466;
+	margin-left: 2.6rem;
+	margin-top: .8rem;
+	margin-bottom: .3rem;
+}
+
+.facebook-card .show-img img {
+	width: 26%;
+}
+
+.facebook-card .show-img img:nth-child(1),
+.facebook-card .show-img img:nth-child(4),
+.facebook-card .show-img img:nth-child(7){
+	margin-left: 2.6rem;
+}
+
+.facebook-card .pos {
+	margin-left: 2.6rem;
+}
+
+.facebook-card .pos img {
+	width: .7rem;
+	margin-right: .25rem;
+}
+
+.facebook-card .tag span {
+	color: #afafaf;
+	border: 1px solid #afafaf;
+	padding: .1rem .6rem;
+}
+
+.facebook-card .tag {
+	margin-left: 2.6rem;
+	margin-top: .4rem;
+	margin-bottom: .2rem;
+}
+
+.facebook-card .control {
+	background: #fff;
+	border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.facebook-card .control .link {
+	color: #afafaf;
+}
+
+.control .link img {
+	width: 0.9rem;
+	margin-right: .4rem;
+}
+
+.card {
+	box-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, .1);
+}
+
+.index-content {
+	margin-bottom: 3rem;
+}
+
+.header {
+	position: relative;
+}
+
+.header input {
+	width: 3rem;
+	position: absolute;
+	right: -1000px;
+	top: -1000px;
+	z-index: 99;
+	opacity: 0;
+}
+
+.header .camera {
+	z-index: 999;
+	position: relative;
+}
+
+
+.header-wrap .title {
+	color: #000;
+}
+
+.header-wrap.bar {
+	background-color: #fff;
+}
+
+.header-wrap.bar .icon {
+	color: #000;
+}
+
+
+.title-wrap {
+	height: 3rem;
+	background-color: #fff;
+	line-height: 3rem;
+	padding: 0 .7rem;
+	margin: 0;
+	font-size: 18px;
+	color: #000;
+}
+
+.title-wrap .icon-right:before {
+	color: #000;
+}
+
+.title-wrap span {
+	font-size: .5rem;
+	color: #999;
+	margin-left: .5rem;
+}
+
+.photo-wrap {
+	min-height: 7rem;
+	background-color: #fff;
+	margin-bottom: .5rem;
+	padding-left: .7rem;
+}
+
+.textarea-wrap {
+	background-color: #fff;
+	height: 8rem;
+	font-size: .5rem;
+}
+
+.textarea-wrap .item-media {
+	height: 0;
+}
+
+.textarea-wrap .item-inner {
+	padding: 0 .7rem;
+}
+
+.textarea-wrap textarea {
+	width: 100%;
+	height: 7.5rem;
+	resize: none;
+	border: none;
+}
+
+.title-wrap.pos {
+	margin-top: .5rem;
+}
+
+.title-wrap input {
+	text-align: right;
+	border: none;
+	width: 60%;
+	float: right;
+	margin-top: 10px;
+}
+
+.btn-wrap {
+	margin-top: 2rem;
+}
+
+.btn-wrap a {
+	width: 8rem;
+	height: 2rem;
+	margin: 0 auto;
+	line-height: 2rem;
+	border: none;
+	color: #000;
+	background-color: #fff;
+	border-radius: .3rem;
+	box-shadow: 0 0 10px 1px #ddd;
+}
+
+.upload-ul {
+	margin: 0;
+	padding: 0;
+}
+
+.upload-ul li {
+	width: 110px;
+	height: 110px;
+}
+
+.upload-pick {
+	background-size: 100%;
+}
+
+.pub_content .pub-pos {
+	margin-bottom: 0.6rem;
+}
+
+.pub_content .content-tag {
+	background: #fff;
+	padding-left: .6rem;
+	padding-bottom: 1rem;
+}
+
+.pub_content .content-tag span {
+	color: #afafaf;
+	border: 1px solid #afafaf;
+	padding: .2rem .6rem;
+	margin-right: .4rem;
+}
+
+.pub_content .content-tag .active {
+	color: #fff;
+	border: 1px solid #3386ff;
+	background: #3386ff;
+}
+
+.pub_content {
+	background-color: #fff;
+}
+
+.pub_content .pub_title {
+	margin-top: .5rem;
+}
+
+.facebook-card .notice {
+	z-index: 999;
+	position: absolute;
+	top: .6rem;
+	right: .4rem;
+	font-size: .5rem;
+	color: #1777cb;
+	padding: .1rem .4rem;
+	border: 1px solid #1777cb;
+}
+
+.facebook-card .notice.hui {
+	color: #ccc;
+	border-color: #ccc;
+}
+
+body .page-group .page .index-content {
+	background: #fff !important;
+}
+
+
+/* login */
+
+.login-content .header-wrap {
+	padding-top: 2.5rem;
+	width: 100%;
+	min-height: 11.5rem;
+	background: url('../images/bg.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.login-content .header-wrap img {
+	width: 4rem;
+	height: 4rem;
+	display: block;
+	margin: 0 auto;
+	border-radius: 50%;
+}
+
+.login-content .list-block {
+	margin: 0;
+}
+
+.login-content .list-block li {
+	padding-top: 0.5rem;
+}
+
+.login-content .btn {
+	padding-top: 1rem;
+	margin-bottom: 10px;
+}
+
+.login-content .btn .button {
+	width: 10rem;
+	height: 2rem;
+	border-radius: 1rem;
+	color: #fff;
+	background: linear-gradient(to right, #142cf6, #33aeff);
+	border: none;
+	line-height: 2rem;
+	margin: 0 auto;
+}
+
+.login-content .for {
+	font-size: .7rem;
+	color: #477bff;
+	text-align: center;
+}
+
+.login-content .list-block .item-title.label {
+	width: 10%;
+}
+
+.login-content .list-block .item-input input {
+	font-size: .8rem;
+	color: #999999;
+}
+
+.login-content .list-block .item-input input::-webkit-input-placeholder {
+	font-size: .8rem;
+	color: #999999;
+}
+
+.login-content .list-block ul:before {
+	background-color: transparent;
+}
+
+body .page-group .page .login-content {
+	background: #fff !important;
+}
+
+/* 注册 */
+.register-page header {
+	background-color: #477bff;
+}
+
+.register-page .list-block {
+	margin-top: .5rem;
+}
+
+.register-page .list-block .item-title.label {
+	width: 13%;
+}
+
+
+
+
+/*图片上传*/
+.imgFileUploade {
+	width: 100%;
+	padding: 10px;
+	background: #fff;
+}
+
+.imgFileUploade .header {
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	background: none;
+	position: relative;
+	z-index: 100000;
+}
+
+.imgFileUploade .header span {
+	display: block;
+	float: left;
+}
+
+.imgFileUploade .header span.imgTitle {
+	line-height: 50px;
+	display: none;
+}
+
+.imgFileUploade .header span.imgTitle b {
+	color: red;
+	margin: 0 5px;
+	line-height: 57px;
+	display: block;
+	float: right;
+	font-size: 20px;
+}
+
+.imgFileUploade .header span.imgClick {
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	cursor: pointer;
+	background: url(../images/upload-bj.png) no-repeat center center;
+	background-size: cover;
+	position: relative;
+	z-index: 10000000;
+}
+
+.imgFileUploade .header span.imgcontent {
+	color: #999;
+	margin-left: 120px;
+	line-height: 50px;
+	display: none;
+}
+
+.imgFileUploade .imgAll {
+	width: 100%;
+	margin-top: 5px;
+}
+
+.imgFileUploade .imgAll ul:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: ".";
+	clear: both;
+	height: 0
+}
+
+.imgFileUploade .imgAll li {
+	width: 100px;
+	height: 100px;
+	border: solid 1px #ccc;
+	margin: 8px 5px;
+	float: left;
+	position: relative;
+	box-shadow: 0 0 10px #eee;
+}
+
+.imgFileUploade .imgAll li img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.delImg {
+	position: absolute;
+	top: -10px;
+	right: -7px;
+	width: 22px;
+	height: 22px;
+	background: #000;
+	border-radius: 50%;
+	display: block;
+	text-align: center;
+	line-height: 22px;
+	color: #fff;
+	font-weight: 700;
+	font-style: normal;
+	cursor: pointer;
+}
+
+.picimg {
+	position: absolute;
+	top: -10000px;
+	left: -10000px;
+}
+
+/*mine*/
+.mine-content .header-wrap {
+	padding-top: 1.5rem;
+	width: 100%;
+	min-height: 8.5rem;
+	background: #327df4;
+	position: relative;
+}
+
+.mine-content .header-wrap img {
+	width: 3rem;
+	height: 3rem;
+	display: inline-block;
+	margin-left: 20px;
+	border-radius: 50%;
+}
+
+.mine-content .header-wrap span {
+	margin-top: 7px;
+	vertical-align: top;
+	display: inline-block;
+	margin-left: 6px;
+	color: #fff;
+}
+
+.mine-content .header-wrap span.nickname {
+	margin-top: 18px;
+}
+
+.mine-content .header-wrap .kuang {
+	width: 90%;
+	height: 5rem;
+	background-color: #fff;
+	box-shadow: 0 0 5px 0 #327df4;
+	border-radius: 10px;
+	position: absolute;
+	top: 105px;
+	left: 18px;
+	z-index: 1;
+}
+
+.mine-content .header-wrap .kuang div {
+	width: 49%;
+	display: inline-block;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.mine-content .header-wrap .kuang div span {
+	display: block;
+	font-size: 14px;
+	color: #000;
+}
+
+.mine-content .header-wrap .kuang div span:first-child {
+	font-size: 20px;
+	color: #327df4;
+}
+
+.mine-content .list-block {
+	padding: 1.75rem 0;
+	background: #fff;
+	margin: 0;
+}
+
+.mine-content .list-block .item-title {
+	color: black;
+	font-style: 12px;
+}
+
+.mine-content .icon:before {
+	color: #999;
+}
+
+.mine-content .list-block .item-link .item-inner {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.mine-content .list-block .item-media {
+	margin-left: 10px;
+}
+
+.mymsg-content .list-block {
+	margin: 0.5rem 0;
+}
+
+.mymsg-content .list-block .item-link .item-inner {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.mymsg-content .list-block .item-title {
+	font-size: 16px;
+	color: #333;
+}
+
+.mymsg-content .list-block .item-after {
+	font-size: 14px;
+	color: #999;
+	position: relative;
+}
+
+.mymsg-content .list-block .item-after img {
+	width: 40px;
+	height: 40px;
+	margin-top: -7px;
+}
+
+.mymsg-content .list-block .item-after input {
+	position: absolute;
+	left: -10000px;
+	top: -10000px;
+}
+
+.mymsg-content .btn {
+	padding-top: 1rem;
+	margin-bottom: 10px;
+	padding-bottom: 1rem;
+}
+
+.mymsg-content .btn .button {
+	width: 10rem;
+	height: 2rem;
+	border-radius: 1rem;
+	color: #fff;
+	background: linear-gradient(to right, #142cf6, #33aeff);
+	border: none;
+	line-height: 2rem;
+	margin: 0 auto;
+}
+
+/*active的灰色*/
+.list-block .item-link.active-state,
+html:not(.watch-active-state) .list-block .item-link:active {
+	background-color: transparent;
+}
+
+.imgFileUploade .imgAll ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.mymsg-content .item-content input {
+	text-align: right;
+	font-size: 14px;
+}
+
+.mymsg-content .list-block .item-inner textarea {
+	height: 150px;
+	text-align: right;
+	font-size: 14px;
+}
+
+.mymsg-content .list-block .item-title.jianjie {
+	height: 135px;
+}
+
+.noshow {
+	display: none;
+}

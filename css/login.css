@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../font/iconfont.eot');
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('../font/iconfont.woff2') format('woff2'),
+        url('../font/iconfont.woff') format('woff'),
+        url('../font/iconfont.ttf') format('truetype'),
+        url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: .40rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #3268fd;
+}
+
+
+
+
+*{margin: 0;padding: 0;}
+.header-wrap{padding-top: .97rem;width: 7.5rem;height: 4.64rem;background: url('../images/bg.jpg');background-size: 100%;background-repeat: no-repeat;}
+.header-wrap img{width: 1.64rem;height: 1.64rem;display: block;margin: 0 auto;border-radius: 50%;}
+.form-wrap .layui-form-item{margin-top: 0.3rem;}
+.form-wrap .layui-form-label{width: auto;padding-left: 0.7rem;}
+.form-wrap .layui-input{font-size: .32rem;color: #999999;border: none;}
+.form-wrap .layui-input::-webkit-input-placeholder{font-size: .32rem;color: #999999;}
+.form-wrap .layui-input-block{text-align: center;margin: .72rem auto 0;}
+.form-wrap .layui-btn{background: linear-gradient(to right, #142cf7, #33afff);padding: 0 1.95rem;border-radius: .5rem;height: 0.92rem;}
+.form-wrap p{text-align: center;font-size: .28rem;color: #477bff;height: 0.4rem;line-height: 0.4rem;}
+.form-wrap p a{color: #477bff;}
+
+
+
+
+
+@media screen and (max-width: 450px){
+    .layui-form-item .layui-input-inline {
+        margin: 0 0 10px 70px;
+    }
+}
+
